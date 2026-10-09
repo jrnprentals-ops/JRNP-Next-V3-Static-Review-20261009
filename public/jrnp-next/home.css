@@ -1,0 +1,298 @@
+.detail-hero{padding:70px 8% 55px}.back-link{display:inline-block;margin-bottom:65px;font-size:12px;text-transform:uppercase;letter-spacing:.15em;border-bottom:1px solid #b0b8a9;padding-bottom:12px}.detail-hero h1{font:400 clamp(53px,7vw,118px)/1.02 Georgia,serif;letter-spacing:-.06em;max-width:1150px;margin:22px 0}.detail-sub{font-size:17px;color:#667167;letter-spacing:.04em}.detail-gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:270px 270px;gap:8px;padding:0 3%;height:548px}.gallery-tile{position:relative;border:0;padding:0;overflow:hidden;cursor:pointer;background:#cbd0c5}.gallery-tile:first-child{grid-row:1/3}.gallery-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.gallery-tile:hover img{transform:scale(1.04)}.gallery-tile span{position:absolute;bottom:20px;right:20px;padding:14px;background:#fff;color:#17271f;font-size:12px;letter-spacing:.06em}.missing-photo:before{content:'Photo unavailable';display:grid;place-items:center;height:100%;color:#516154}.detail-layout{max-width:1500px;margin:auto;padding:100px 8%;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.75fr);gap:10%}.detail-body h2,.detail-aside h2{font:400 clamp(38px,4vw,65px)/1.1 Georgia,serif;letter-spacing:-.04em;margin:18px 0 26px}.detail-body>p{font-size:18px;line-height:1.85;color:#526054;max-width:720px}.detail-body h2:not(:first-of-type){margin-top:65px}.amenities{display:flex;flex-wrap:wrap;gap:12px}.amenities span{border:1px solid #d3d9ce;padding:16px 19px;font-size:13px}.rooms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.detail-body .disclosure{font-size:12px;margin-top:40px}.detail-aside{position:sticky;top:24px;align-self:start;background:#fff;padding:38px;box-shadow:0 24px 65px #12251b13}.detail-aside>p{line-height:1.7;color:#526054}.detail-aside form{display:grid;gap:17px;margin-top:30px}.detail-aside label{display:grid;gap:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}.detail-aside input{width:100%;border:1px solid #d2d9cd;padding:15px;background:#fbfbf8;border-radius:0;color:#17271f}.detail-aside button{border:0;background:#172f23;color:#fff;padding:19px;font-size:12px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}.detail-aside .booking-note{font-size:12px}.detail-aside #date-error{font-size:13px;color:#a53628;margin:0}#viewer{max-width:100vw;max-height:100vh;width:100vw;height:100vh;border:0;background:#14221b;color:#fff;padding:60px 15%;text-align:center}#viewer::backdrop{background:#000e}#viewer img{width:100%;height:75vh;object-fit:contain}.close-viewer{position:absolute;right:20px;top:20px;background:#fff;border:0;padding:13px 20px}.photo-prev,.photo-next{position:absolute;top:45%;background:#fff;border:0;padding:14px;font-size:20px}.photo-prev{left:3%}.photo-next{right:3%}@media(max-width:950px){.detail-gallery{grid-template-rows:190px 190px;height:388px}.detail-layout{grid-template-columns:1fr;gap:50px}.detail-aside{position:static}}@media(max-width:600px){.detail-hero{padding:35px 22px}.back-link{margin-bottom:40px}.detail-hero h1{font-size:clamp(48px,12vw,72px)}.detail-gallery{padding:0 10px;grid-template-columns:1fr 1fr;grid-template-rows:280px 125px 95px;height:auto}.gallery-tile:first-child{grid-column:1/3;grid-row:1}.gallery-tile:nth-child(4){display:none}.gallery-tile:nth-child(5){grid-column:1/3}.detail-layout{padding:70px 22px}.detail-aside{padding:27px}#viewer{padding:80px 12px}#viewer img{height:65vh}.photo-prev,.photo-next{top:82%}}
+/* JRNP Next booking estimate — scoped to new UI only. */
+.quote-result{margin-top:20px;background:#f7f5ee;border:1px solid #d9ded3;padding:28px 25px}
+.quote-result[hidden]{display:none!important}
+.quote-result h3{font:400 clamp(25px,2.7vw,34px)/1.2 Georgia,serif;letter-spacing:-.035em;margin:16px 0 10px}
+.quote-result #quote-message{font-size:13px;line-height:1.7;color:#506153}
+.quote-lines{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:13px 16px;padding:18px 0;margin:0}
+.quote-lines dt,.quote-lines dd{font-size:13px;margin:0}
+.quote-lines dt{color:#536455}
+.quote-lines dd{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.quote-lines dt:nth-last-of-type(3),.quote-lines dd:nth-last-of-type(3){padding-top:14px;border-top:1px solid #cbd4c5;font-weight:800}
+.quote-caution{border-top:1px solid #d3dcd0;padding-top:14px;font-size:12px;line-height:1.7;color:#627062}
+@media(max-width:700px){.quote-result{padding:23px 17px}.quote-lines{gap:11px}.quote-lines dt,.quote-lines dd{font-size:12px}}
+
+/* JRNP Next local-staging inquiry: standalone addition, approved green/white palette intact. */
+.request-panel{margin-top:24px;padding:26px 22px;border:1px solid #cdd9c9;background:#f5f8f2}
+.request-panel[hidden],.request-panel [hidden]{display:none!important}
+.request-panel h3{font:400 clamp(26px,3vw,36px)/1.18 Georgia,serif;letter-spacing:-.04em;color:#213a2b;margin:12px 0 8px}
+.request-panel>p:not(.kicker){font-size:13px;line-height:1.65;color:#516454}
+.request-panel form{margin-top:21px;gap:14px}
+.request-panel .request-consent{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;letter-spacing:0;font-weight:400;text-transform:none}
+.request-panel .request-consent input{width:18px;height:18px;min-width:18px;margin:2px 0 0;accent-color:#1a3426}
+.request-panel #request-error{margin:0;color:#9d362c;font-size:13px;line-height:1.5}
+.request-panel #request-submit{padding:16px;background:#173c2a}
+.request-panel #request-submit:disabled{opacity:.65;cursor:not-allowed}
+.request-panel #request-success{border-left:3px solid #4b8060;background:#fff;padding:15px 17px;color:#213c2b;font-size:13px;line-height:1.7;overflow-wrap:anywhere}
+@media(max-width:700px){.request-panel{padding:22px 16px}}
+
+/* Original-photo room tours: JRNP Next green-and-white only. */
+.room-tour-card{display:flex;flex-direction:column;align-items:stretch;width:100%;min-width:0;border:1px solid #d8ded4;border-radius:0;background:#fff;color:#1a3024;text-align:left;padding:0;cursor:pointer;overflow:hidden;transition:transform .24s,border-color .24s}
+.room-tour-card:hover{transform:translateY(-3px);border-color:#8c9f8c}
+.room-tour-card:focus-visible{outline:3px solid #b39b6a;outline-offset:3px}
+.room-tour-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#e2e7df}
+.room-tour-copy{display:flex;flex-direction:column;gap:9px;padding:17px 18px 21px;flex:1}
+.room-tour-kicker{font-size:9px;font-weight:700;letter-spacing:.12em;color:#788776}
+.room-tour-title{font:400 clamp(22px,2.3vw,29px)/1.12 Georgia,serif;letter-spacing:-.025em;color:#172c20}
+.room-tour-description{font-size:12px;line-height:1.65;color:#5c6d60}
+@media(max-width:700px){.rooms{grid-template-columns:1fr;gap:18px}.room-tour-card img{aspect-ratio:16/10}.room-tour-copy{padding:17px 18px 19px}}
+@media(prefers-reduced-motion:reduce){.room-tour-card{transition:none}.room-tour-card:hover{transform:none}}
+
+/* JRNP Next: verified property-amenity groups. Source-of-truth content renders once in home.js. */
+.detail-body #amenities.amenities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-items:stretch;min-width:0}
+.detail-body #amenities .amenity-group{min-width:0;background:#fff;border:1px solid #d9dfd4;padding:23px 21px 27px;transition:border-color .2s ease,transform .2s ease}
+.detail-body #amenities .amenity-group:hover{border-color:#97a995;transform:translateY(-2px)}
+.detail-body #amenities .amenity-group-title{display:flex;align-items:baseline;gap:12px;font:400 clamp(21px,2.1vw,28px)/1.22 Georgia,serif;letter-spacing:-.025em;color:#203829;margin:0 0 19px;padding-bottom:16px;border-bottom:1px solid #e0e6dd}
+.detail-body #amenities .amenity-group-number{border:0!important;padding:0!important;font:700 10px/1.5 Arial,sans-serif;letter-spacing:.15em;color:#7d967e;flex:0 0 auto}
+.detail-body #amenities .amenity-feature-list{list-style:none;padding:0;margin:0;display:grid;gap:13px}
+.detail-body #amenities .amenity-feature-list li{position:relative;padding-left:22px;font-size:13px;line-height:1.55;color:#4a5f50;overflow-wrap:break-word}
+.detail-body #amenities .amenity-feature-list li::before{content:'';position:absolute;left:1px;top:.48em;width:7px;height:7px;border:1.5px solid #809b83;border-radius:50%}
+@media(max-width:800px){.detail-body #amenities.amenities{gap:11px}.detail-body #amenities .amenity-group{padding:21px 17px 24px}}
+@media(max-width:600px){.detail-body #amenities.amenities{grid-template-columns:1fr;gap:14px}.detail-body #amenities .amenity-group{padding:22px 20px 26px}}
+@media(prefers-reduced-motion:reduce){.detail-body #amenities .amenity-group{transition:none}.detail-body #amenities .amenity-group:hover{transform:none}}
+
+/* Complete, property-specific amenities: new JRNP Next presentation only. */
+.detail-body #amenity-count{max-width:690px;margin:-9px 0 25px;color:#667466;font-size:13px;line-height:1.65;letter-spacing:.015em}
+.detail-body #amenities.amenities{margin-bottom:12px}
+.detail-body #amenities .amenity-group:last-child:nth-child(odd){grid-column:1/-1}
+.detail-body #amenities .amenity-group-title{overflow-wrap:break-word}
+.detail-body #amenities .amenity-feature-list li{overflow-wrap:anywhere}
+.listing-marketplaces{margin-top:26px;padding-top:20px;border-top:1px solid #d9e0d7}
+.listing-marketplaces-heading{margin:0 0 13px;font-weight:700;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#253c2d}
+.listing-marketplace-links{display:flex;gap:9px;flex-wrap:wrap}
+.detail-aside .listing-marketplace-link{display:flex;align-items:center;justify-content:center;flex:1 1 110px;min-width:0;text-align:center;min-height:45px;padding:11px 13px;color:white;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.025em;transition:filter .15s}
+.listing-marketplace-link:hover{filter:brightness(.9)}
+.listing-marketplace-link:focus-visible{outline:3px solid #9aa993;outline-offset:2px}
+.listing-marketplace-airbnb{background:#e31c5f}
+.listing-marketplace-vrbo{background:#235dba}
+.detail-aside .listing-marketplaces-note{font-size:11px;line-height:1.55;color:#6b786d;margin:12px 0 0}
+.detail-aside .listing-hosts{font-size:12px;line-height:1.65;color:#536757;margin:19px 0 0}
+.detail-aside .listing-hosts a{color:#173c2a;border-bottom:1px solid #889888;text-decoration:none}
+@media(max-width:600px){.detail-body #amenity-count{font-size:12px;margin:-7px 0 19px}.detail-body #amenities .amenity-group{padding:21px 19px 25px}.detail-aside .listing-marketplace-link{flex-basis:42%}}
+@media(prefers-reduced-motion:reduce){.detail-aside .listing-marketplace-link{transition:none}}
+/* JRNP Next: property-curated destination guide. Approved cream, dark-green and brass palette. */
+.local-guide{max-width:1500px;margin:0 auto;padding:90px 8% 84px;border-top:1px solid #dce3d8}
+.local-guide-heading{max-width:880px;margin-bottom:33px}
+.local-guide-heading .kicker{font-size:11px;letter-spacing:.15em;color:#687961}
+.local-guide-heading h2{font:400 clamp(38px,5vw,70px)/1.08 Georgia,serif;letter-spacing:-.046em;color:#1c3427;margin:17px 0 18px}
+.local-guide-heading>p:last-child{font:400 15px/1.8 Arial,sans-serif;color:#536658;margin:0;max-width:800px}
+.local-guide-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+.local-guide-panel{min-width:0;padding:30px 32px 20px;background:#fff;border:1px solid #dce2d8}
+.local-guide-panel-head{border-bottom:1px solid #dee4db;padding-bottom:21px;margin-bottom:5px}
+.local-guide-panel-head>span{font-size:10px;letter-spacing:.15em;color:#769077;font-weight:700}
+.local-guide-panel-head h3{font:400 clamp(26px,3vw,38px)/1.12 Georgia,serif;letter-spacing:-.035em;color:#213b2b;margin:10px 0 0}
+.local-guide-card{padding:21px 0 24px;border-bottom:1px solid #e5e9e1}
+.local-guide-card:last-child{border-bottom:0}
+.local-guide-card-type{font-size:10px;line-height:1.45;font-weight:700;letter-spacing:.12em;color:#789179;margin:0 0 10px}
+.local-guide-card-title{font:400 clamp(19px,2vw,25px)/1.22 Georgia,serif;letter-spacing:-.016em;color:#183325;margin:0 0 8px}
+.local-guide-card-description{font-size:13px;line-height:1.68;color:#56665b;margin:0 0 13px}
+.local-guide-card-link{display:inline-flex;align-items:center;color:#193d2a;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.025em;border-bottom:1px solid #96a998;padding-bottom:5px}
+.local-guide-card-link:hover{border-color:#1b3726}
+.local-guide-card-link:focus-visible,.lake-level-source:focus-visible{outline:3px solid #bf9861;outline-offset:3px}
+.local-guide-disclaimer{font-size:12px;line-height:1.7;color:#68756a;margin:24px 0 0;max-width:920px}
+#lake-level-guide[hidden]{display:none!important}
+.lake-level-guide{border:1px solid #c8d5c9;background:#edf3ea;padding:32px 37px 30px;margin-bottom:26px;color:#25402e}
+.lake-level-head .kicker{font-size:10px;letter-spacing:.17em;color:#658369}
+.lake-level-head h3{font:400 clamp(28px,3.5vw,45px)/1.14 Georgia,serif;letter-spacing:-.04em;margin:11px 0 12px;color:#1c3526}
+.lake-level-head>p:last-child{font-size:14px;line-height:1.7;color:#4a624f;max-width:950px;margin:0 0 24px}
+.lake-level-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:700px;margin:0 0 19px}
+.lake-level-fact{background:#fff;border:1px solid #d0dccf;padding:18px 23px 20px}
+.lake-level-fact span{display:block;color:#607a65;letter-spacing:.11em;font-size:10px;font-weight:700;text-transform:uppercase;margin-bottom:7px}
+.lake-level-fact strong{font:400 clamp(30px,3.8vw,46px)/1.14 Georgia,serif;color:#24442f;white-space:nowrap}
+.lake-level-fact small{font-size:15px;font-weight:400}
+.lake-level-timing,.lake-level-safety{font-size:13px;line-height:1.74;color:#425a49;max-width:990px;margin:0 0 15px}
+.lake-level-safety{border-left:3px solid #ac9667;padding:4px 0 4px 17px;margin-top:18px;margin-bottom:20px}
+.lake-level-source{display:inline-flex;padding:13px 17px;background:#193826;color:white;text-decoration:none;font-size:12px;font-weight:700;line-height:1.35;gap:6px}
+.lake-level-source:hover{background:#285339;color:#fff}
+.lake-level-source-note{font-size:11px;line-height:1.65;color:#607362;margin:12px 0 0}
+@media(max-width:900px){.local-guide{padding:72px 6%}.local-guide-panel{padding:24px 24px 15px}}
+@media(max-width:680px){.local-guide{padding:66px 22px}.local-guide-heading{margin-bottom:24px}.local-guide-heading h2{font-size:clamp(34px,9.5vw,52px)}.local-guide-heading>p:last-child{font-size:14px}.local-guide-columns{grid-template-columns:1fr;gap:14px}.local-guide-panel{padding:24px 23px 14px}.local-guide-card{padding:18px 0 20px}.lake-level-guide{padding:25px 20px 24px;margin-bottom:20px}.lake-level-facts{gap:9px}.lake-level-fact{padding:14px 13px 15px}.lake-level-fact strong{font-size:31px}.lake-level-fact small{font-size:11px}.lake-level-source{width:100%;justify-content:center;text-align:center}.lake-level-safety{padding-left:12px}}
+@media(max-width:365px){.local-guide{padding-left:16px;padding-right:16px}.local-guide-panel{padding-left:19px;padding-right:19px}.lake-level-fact strong{font-size:27px}}
+/* Mobile-friendly listing date-picker path, using native calendar fields. */
+.detail-hero-book{display:inline-flex;align-items:center;gap:35px;background:#244530;color:#fff;text-decoration:none;padding:16px 22px;margin-top:25px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;min-height:50px}
+.detail-hero-book span{font-size:20px}
+.detail-hero-book:hover{background:#345a40;color:#fff}
+.detail-hero-book:focus-visible{outline:3px solid #b99c61;outline-offset:4px}
+.date-picker-help{font-size:12px!important;line-height:1.7!important;color:#58705f!important;margin:17px 0 20px!important}
+.detail-aside #dates{scroll-margin-top:22px}
+.detail-aside #dates input[type="date"]{min-height:46px}
+@media(max-width:700px){.detail-hero-book{width:100%;justify-content:space-between;gap:12px;padding:16px 18px}.detail-aside #dates input[type="date"]{min-height:50px;font-size:16px}}
+
+/* Semantic sibling-listing discovery for the five static search landing pages. */
+.listing-explore{padding:50px 7%;background:#eef3e9;border-top:1px solid #d7e2d4;color:#244431}
+.listing-explore h2{font:400 clamp(29px,3.4vw,43px)/1.2 Georgia,serif;letter-spacing:-.04em;margin:0 0 25px}
+.listing-explore ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;padding:0;margin:0}
+.listing-explore a{display:block;padding:17px 20px;background:#fff;border:1px solid #d6e2d2;color:#244631;font-size:13px;line-height:1.5;text-decoration:none;min-height:75px}
+.listing-explore a:hover,.listing-explore a:focus-visible{border-color:#b79a66;background:#fffdf7}
+.listing-explore a[aria-current="page"]{background:#e0e9dc;font-weight:700}
+
+/* V3 listing header actions: subtle top-right links, safe at 360px. */
+.listing-header-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:0 0 auto;position:relative;z-index:10}
+.header .listing-header-actions .detail-hero-book{margin:0;display:inline-flex;gap:9px;align-items:center;min-height:38px;padding:9px 12px;border:1px solid #c6b184;border-radius:24px;background:transparent;color:#29402d;font-size:10px;font-weight:700;letter-spacing:.045em;text-transform:none;white-space:nowrap;transition:background .2s,border-color .2s}
+.header .listing-header-actions .detail-hero-book span[aria-hidden]{font-size:13px;color:#ae874a}
+.header .listing-header-actions .detail-hero-book:hover{background:#fbf4e4;border-color:#b89b65;color:#243c2d}
+.listing-header-actions .date-label-short{display:none}
+.listing-share{position:relative}
+.listing-share summary{display:inline-flex;align-items:center;justify-content:center;min-height:38px;min-width:59px;padding:9px 12px;border:1px solid #d9ded4;border-radius:24px;cursor:pointer;color:#29402d;font-size:10px;font-weight:700;list-style:none}
+.listing-share summary::-webkit-details-marker{display:none}
+.listing-share summary:hover,.listing-share[open] summary{border-color:#b89b65;background:#fbf4e4}
+.listing-share-panel{position:absolute;right:0;top:calc(100% + 10px);width:196px;display:grid;gap:2px;background:#fff;border:1px solid #d2dacb;box-shadow:0 14px 26px #19372326;padding:9px;z-index:20}
+.listing-share-panel a,.listing-share-panel button{border:0;background:transparent;color:#26452f;font:600 12px Arial,sans-serif;text-align:left;padding:11px;text-decoration:none;cursor:pointer}
+.listing-share-panel a:hover,.listing-share-panel button:hover{background:#eef3e8}
+.listing-share-panel [hidden]{display:none!important}
+.listing-share-panel #listing-share-status{font-size:11px;color:#476f4c;line-height:1.5;padding:0 9px;overflow-wrap:anywhere}
+.listing-gold-note,.jrnp-gold-script{color:#9d7a3e;font:400 19px/1.4 Georgia,serif;letter-spacing:-.01em}
+.detail-hero .jrnp-gold-script{margin:19px 0 0;font-size:18px;color:#896b35}
+.jrnp-gold-script em{font:400 1.3em/1.3 "Snell Roundhand","Brush Script MT","Segoe Script",cursive;color:#b89559;display:inline-block;padding:0 .09em .13em .02em;white-space:nowrap}
+.listing-long-copy{max-width:720px;color:#526054}
+.listing-long-copy h3{font:400 clamp(24px,2.4vw,33px)/1.24 Georgia,serif;color:#314b39;margin:0 0 19px;letter-spacing:-.02em}
+.listing-long-copy p{font-size:16px;line-height:1.82;color:#526054;margin:0 0 17px}
+.jrnp-guest-weather{max-width:1500px;margin:0 auto;padding:64px 8%;border-top:1px solid #dce3d8;background:#f1f4ec}
+.jrnp-guest-weather h2{font:400 clamp(34px,4.2vw,52px)/1.12 Georgia,serif;letter-spacing:-.045em;margin:16px 0}
+.jrnp-weather-region{font-size:13px;letter-spacing:.045em;font-weight:700;color:#40614b}
+.jrnp-weather-unavailable{font-size:15px;line-height:1.7;color:#526a58;max-width:770px}
+.jrnp-weather-links{display:flex;flex-wrap:wrap;gap:12px;margin:23px 0}
+.jrnp-weather-links a{border:1px solid #b4c6b5;background:#fff;color:#25452f;font-size:12px;padding:15px 18px;text-decoration:none}
+.jrnp-weather-links a:hover,.jrnp-weather-links a:focus-visible{border-color:#b89b65}
+.jrnp-weather-note{font-size:12px;line-height:1.7;color:#5e7460;max-width:780px}
+@media(max-width:700px){.header .listing-header-actions .detail-hero-book{width:auto;min-height:35px;padding:7px 9px}.listing-header-actions{gap:6px}.listing-header-actions .date-label-long{display:none}.listing-header-actions .date-label-short{display:inline}.listing-share summary{min-height:35px;min-width:52px;padding:7px 9px}.detail-hero .jrnp-gold-script{font-size:16px}.listing-long-copy p{font-size:15px}.jrnp-guest-weather{padding:55px 22px}.jrnp-weather-links{flex-direction:column}.jrnp-weather-links a{max-width:100%}}
+@media(max-width:380px){.header .listing-header-actions .detail-hero-book{padding:6px 7px}.listing-share summary{min-width:47px;padding:6px 7px}.listing-header-actions{gap:4px}}
+@media(prefers-reduced-motion:reduce){.listing-header-actions .detail-hero-book{transition:none!important}}
+
+
+/* JRNP date-range calendar: verified status only, new-design property pages. */
+@media(min-width:951px){
+ .detail-layout{max-width:1680px;grid-template-columns:minmax(0,1.55fr) minmax(390px,.95fr);gap:clamp(30px,3.8vw,62px);padding:83px clamp(32px,4.2vw,70px)}
+ .detail-aside{padding:clamp(30px,3vw,46px)}
+}
+.detail-layout .listing-long-copy{max-width:850px}
+@media(min-width:951px){.detail-layout .listing-long-copy p{font-size:17px;line-height:1.82}.detail-layout .listing-long-copy h3{font-size:clamp(27px,2.6vw,36px)}}
+@media(min-width:601px) and (max-width:950px){.detail-layout{padding:70px 5%;gap:40px}}
+.jrnp-range-trigger{display:flex!important;align-items:center;justify-content:space-between;gap:15px;width:100%;border:1px solid #b6c9b7!important;background:#e9f2e8!important;color:#23442f!important;padding:16px 18px!important;font:700 13px/1.35 Arial,sans-serif!important;letter-spacing:0!important;text-transform:none!important;min-height:55px}
+.jrnp-range-trigger:hover{background:#dcebd9!important}
+.jrnp-range-trigger-icon{font-size:20px;flex:0 0 auto}
+.jrnp-range-form-note{margin:-8px 0 3px!important;color:#56715a!important;font-size:11px!important;line-height:1.55!important;text-transform:none!important;letter-spacing:0!important}
+.jrnp-range-dialog{box-sizing:border-box;width:min(940px,calc(100vw - 28px));max-width:none;max-height:calc(100dvh - 28px);border:1px solid #c9d8c6;border-radius:12px;background:#fff;color:#1b3325;box-shadow:0 30px 85px #09231960;padding:0;overflow-y:auto;overscroll-behavior:contain}
+.jrnp-range-dialog::backdrop{background:#10231bb5;backdrop-filter:blur(3px)}
+.jrnp-range-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:30px 36px 18px;border-bottom:1px solid #e4e9df}
+.jrnp-range-eyebrow{font:800 10px/1.5 Arial,sans-serif;letter-spacing:.18em;color:#8e764f;margin:0 0 9px}
+.jrnp-range-title{font:400 clamp(30px,4.2vw,44px)/1.1 Georgia,serif;letter-spacing:-.045em;color:#1c3526;margin:0}
+.jrnp-range-subtitle{font:400 13px/1.65 Arial,sans-serif;margin:11px 0 0;color:#5e7362;max-width:610px}
+.jrnp-range-close{display:grid;place-items:center;flex:0 0 39px;width:39px;height:39px;cursor:pointer;border:1px solid #d7e1d2;background:#fff;color:#294532;border-radius:50%;font-size:23px;line-height:1}
+.jrnp-range-close:hover{background:#f0f5ec}
+.jrnp-range-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 36px 2px}
+.jrnp-range-month-nav{display:flex;gap:8px}
+.jrnp-range-nav{display:grid;place-items:center;width:41px;height:41px;border:1px solid #d5e0d0;border-radius:50%;background:#f9fbf7;color:#2b4d35;font-size:20px;cursor:pointer}
+.jrnp-range-nav:disabled{opacity:.32;cursor:not-allowed}
+.jrnp-range-nav:not(:disabled):hover{background:#e6f0e2}
+.jrnp-range-hint{font:600 12px/1.5 Arial,sans-serif;color:#687a69;text-align:right}
+.jrnp-range-months{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px;padding:16px 36px 20px}
+.jrnp-range-month{min-width:0}
+.jrnp-range-month h3{margin:0 0 18px;color:#273e2f;font:400 24px/1.2 Georgia,serif;letter-spacing:-.02em}
+.jrnp-range-weekdays,.jrnp-range-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.jrnp-range-weekdays span{font:700 10px/1.4 Arial,sans-serif;color:#78907a;text-align:center;padding:0 0 10px}
+.jrnp-range-day{appearance:none;display:flex;align-items:center;justify-content:center;min-height:47px;border:1px solid transparent;border-radius:7px;padding:1px 0;color:#2a4433;font:600 13px/1 Arial,sans-serif;background:#f8faf6;cursor:pointer;font-variant-numeric:tabular-nums}
+.jrnp-range-day:not(:disabled):hover,.jrnp-range-day:focus-visible{border-color:#648c6d;outline:2px solid #b8d2b7;outline-offset:1px}
+.jrnp-range-day:disabled{cursor:not-allowed}
+.jrnp-range-day.is-past{background:#f6f6f3;color:#bec6bd}
+.jrnp-range-day.is-known-available{background:#e5f3e7;color:#27663f;border-color:#b9d7bf}
+.jrnp-range-day.is-known-unavailable{background:#f6e6e4;color:#af655c;border-color:#e5c4be;text-decoration:line-through}
+.jrnp-range-day.is-range{background:#e3f0e4;color:#286342;border-color:#b6d2bd}
+.jrnp-range-day.is-range-verified{background:#cae9d0;color:#195a33;border-color:#a0c9a8}
+.jrnp-range-day.is-range-error{background:#f2dcda;color:#963e34;border:1px dashed #cb8d83}
+.jrnp-range-day.is-endpoint{background:#244d35;color:#fff;border-color:#244d35;font-weight:800}
+.jrnp-range-day.is-endpoint.is-range-error{background:#9b473d;color:#fff}
+.jrnp-range-day.is-blank{visibility:hidden;pointer-events:none}
+.jrnp-range-legend{display:flex;gap:12px 19px;flex-wrap:wrap;padding:0 36px 20px;font:11px/1.5 Arial,sans-serif;color:#5e6d62}
+.jrnp-range-legend span{display:inline-flex;align-items:center;gap:7px}
+.jrnp-range-legend i{display:inline-block;width:13px;height:13px;background:#f4f5f2;border:1px solid #d3d9ce;border-radius:3px}
+.jrnp-range-legend .green{background:#e5f3e7;border-color:#b1d6b9}
+.jrnp-range-legend .red{background:#f6e6e4;border-color:#e5c4be}
+.jrnp-range-summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;background:#f3f7f0;border-top:1px solid #e0e8dc;padding:22px 36px 24px}
+.jrnp-range-selection{font:700 15px/1.4 Arial,sans-serif;color:#274b33;margin:0}
+.jrnp-range-feedback{font:12px/1.55 Arial,sans-serif;color:#576e5c;margin:7px 0 0}
+.jrnp-range-feedback.is-error{color:#9c3e33}
+.jrnp-range-quote-lines{display:grid;grid-template-columns:1fr auto;gap:7px 18px;font:12px/1.45 Arial,sans-serif;margin:15px 0 0;max-width:390px}
+.jrnp-range-quote-lines dt,.jrnp-range-quote-lines dd{margin:0}
+.jrnp-range-quote-lines dt{color:#647568}.jrnp-range-quote-lines dd{color:#224832;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.jrnp-range-quote-lines .jrnp-range-total{border-top:1px solid #c9d9c8;padding-top:10px;color:#194a2c;font-weight:800}
+.jrnp-range-actions{display:flex;flex-direction:column;gap:9px;align-items:stretch;min-width:208px}
+.jrnp-range-check{border:0;background:#234b34;color:white;padding:16px 20px;font:800 11px/1.4 Arial,sans-serif;letter-spacing:.075em;cursor:pointer}
+.jrnp-range-check:hover{background:#326747}
+.jrnp-range-check:disabled{opacity:.52;cursor:not-allowed}
+.jrnp-range-done{border:1px solid #b7caba;background:transparent;color:#31553d;padding:11px 15px;font:700 11px/1.4 Arial,sans-serif;cursor:pointer}
+.jrnp-range-fineprint{padding:13px 36px 20px;margin:0;color:#778475;font:11px/1.55 Arial,sans-serif}
+@media(max-width:760px){
+ .jrnp-range-dialog{width:calc(100vw - 14px);max-height:calc(100dvh - 14px);border-radius:9px}
+ .jrnp-range-top{padding:19px 18px 14px;gap:10px}
+ .jrnp-range-title{font-size:31px}
+ .jrnp-range-subtitle{font-size:12px;margin-top:8px}
+ .jrnp-range-close{width:35px;height:35px;flex-basis:35px}
+ .jrnp-range-bar{padding:12px 18px 1px}
+ .jrnp-range-hint{font-size:11px}
+ .jrnp-range-months{grid-template-columns:1fr;padding:13px 18px 15px;gap:0}
+ .jrnp-range-month:nth-child(2){display:none}
+ .jrnp-range-month h3{font-size:23px;margin:0 0 14px}
+ .jrnp-range-day{min-height:43px;font-size:13px}
+ .jrnp-range-legend{padding:0 18px 15px;gap:8px 15px;font-size:10px}
+ .jrnp-range-summary{grid-template-columns:1fr;padding:16px 18px 18px;gap:14px}
+ .jrnp-range-actions{min-width:0;display:grid;grid-template-columns:1fr auto;align-items:center}
+ .jrnp-range-check{padding:14px 15px}
+ .jrnp-range-fineprint{padding:10px 18px 16px}
+}
+@media(max-width:365px){.jrnp-range-day{min-height:39px}.jrnp-range-weekdays,.jrnp-range-days{gap:2px}.jrnp-range-hint{max-width:140px}}
+@media(prefers-reduced-motion:reduce){.jrnp-range-dialog *{scroll-behavior:auto!important}}
+
+
+/* JRNP OWNER HEADER REVISION 2026-10-08: scoped listing navigation and compact hero. */
+.jrnp-listing-header{height:94px;min-height:94px;padding:0 clamp(19px,4.6vw,82px);gap:clamp(13px,2vw,30px);background:#f7f5ee;border-bottom:1px solid #e2e5dd;position:relative;z-index:60}
+.jrnp-listing-header .wordmark-original img{width:105px;max-height:84px;height:auto}
+.jrnp-listing-header .desktop-nav{display:flex;flex:1;align-items:center;justify-content:center;gap:clamp(13px,1.75vw,30px);margin-left:0;margin-right:0;min-width:0}
+.jrnp-listing-header .desktop-nav a{font:600 13px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.015em;text-transform:none;color:#2c4736;white-space:nowrap;border-bottom:2px solid transparent;padding:10px 0 8px;transition:color .16s,border-color .16s}
+.jrnp-listing-header .desktop-nav a:hover,.jrnp-listing-header .desktop-nav a:focus-visible{color:#193c29;border-bottom-color:#b89559}
+.jrnp-listing-header .listing-header-actions{gap:10px;margin-left:auto;z-index:65}
+.jrnp-listing-header .listing-header-actions .detail-hero-book{margin:0;background:#254731;color:#fff;border:1px solid #254731;border-radius:10px;min-height:44px;padding:10px 16px;font-size:12px;line-height:1.2;letter-spacing:.015em;font-weight:700;gap:10px}
+.jrnp-listing-header .listing-header-actions .detail-hero-book span[aria-hidden]{color:#eddaaf;font-size:16px}
+.jrnp-listing-header .listing-header-actions .detail-hero-book:hover{background:#365d43;border-color:#365d43;color:#fff}
+.jrnp-listing-header .listing-share summary{height:44px;width:44px;min-width:44px;min-height:44px;border-radius:10px;padding:0;background:transparent;border:1px solid #cbd3c7;display:grid;place-items:center;color:#254731}
+.jrnp-listing-header .listing-share summary:hover,.jrnp-listing-header .listing-share[open] summary{background:#f0ebdb;border-color:#b79b68}
+.jrnp-listing-header .listing-share-panel{z-index:95}
+.jrnp-listing-menu{display:none;position:relative;flex:0 0 auto}
+.jrnp-listing-menu summary{display:flex;gap:8px;align-items:center;justify-content:center;min-height:44px;padding:0 12px;border:1px solid #cbd3c7;border-radius:10px;color:#294631;background:transparent;cursor:pointer;list-style:none;font:700 12px Arial,Helvetica,sans-serif}
+.jrnp-listing-menu summary::-webkit-details-marker{display:none}
+.jrnp-listing-menu summary:hover,.jrnp-listing-menu[open] summary{background:#f0ebdb;border-color:#b79b68}
+.jrnp-listing-menu-links{position:absolute;top:calc(100% + 11px);right:0;z-index:95;width:min(315px,calc(100vw - 38px));padding:9px;background:#fff;border:1px solid #d9dfd5;box-shadow:0 18px 40px #12271824;display:grid}
+.jrnp-listing-menu-links a{padding:13px 14px;color:#294631;font:600 14px/1.3 Arial,Helvetica,sans-serif;border-radius:5px}
+.jrnp-listing-menu-links a:hover,.jrnp-listing-menu-links a:focus-visible{background:#eef2e9}
+.jrnp-listing-header + main .detail-hero{padding:clamp(27px,3.3vw,48px) clamp(23px,6.4vw,105px) 46px}
+.jrnp-listing-header + main .detail-hero .back-link{margin-bottom:clamp(18px,2.6vw,34px);padding-bottom:7px;font-size:11px;color:#405a47;letter-spacing:.13em}
+.jrnp-listing-header + main .detail-hero .kicker{margin:5px 0 11px}
+.jrnp-listing-header + main .detail-hero h1{font-size:clamp(47px,5.4vw,82px);line-height:1.075;letter-spacing:-.055em;max-width:960px;margin:13px 0 17px;text-wrap:balance;overflow-wrap:break-word}
+.jrnp-listing-header + main .detail-hero .detail-sub{margin:0;font-size:clamp(14px,1.3vw,17px);line-height:1.6}
+.jrnp-listing-header + main .detail-hero .jrnp-gold-script{text-align:right;font-size:clamp(24px,2.5vw,34px);line-height:1.2;margin:4px 3% 0 0;color:#8b703f}
+.jrnp-listing-header a:focus-visible,.jrnp-listing-header summary:focus-visible{outline:3px solid #b89559;outline-offset:3px}
+@media(max-width:1120px){
+ .jrnp-listing-header .desktop-nav{display:none}
+ .jrnp-listing-menu{display:block}
+}
+@media(max-width:700px){
+ .jrnp-listing-header{height:76px;min-height:76px;padding:0 18px;gap:8px}
+ .jrnp-listing-header .wordmark-original img{width:88px;max-height:72px}
+ .jrnp-listing-header .listing-header-actions{gap:7px}
+ .jrnp-listing-header .listing-header-actions .detail-hero-book{min-height:44px;padding:9px 10px;gap:4px}
+ .jrnp-listing-header .listing-header-actions .date-label-long{display:none}
+ .jrnp-listing-header .listing-header-actions .date-label-short{display:inline}
+ .jrnp-listing-header + main .detail-hero{padding:28px 22px 35px}
+ .jrnp-listing-header + main .detail-hero .back-link{margin-bottom:22px}
+ .jrnp-listing-header + main .detail-hero h1{font-size:clamp(43px,10.1vw,62px);line-height:1.09;margin:12px 0 14px}
+ .jrnp-listing-header + main .detail-hero .jrnp-gold-script{margin:12px 0 0;font-size:clamp(24px,6.8vw,30px);text-align:right}
+}
+@media(max-width:385px){
+ .jrnp-listing-header{padding:0 12px;gap:6px}
+ .jrnp-listing-header .wordmark-original img{width:84px}
+ .jrnp-listing-header .listing-header-actions{gap:5px}
+ .jrnp-listing-header .listing-header-actions .detail-hero-book{padding:9px 8px}
+ .jrnp-listing-menu summary{padding:0 8px;gap:5px}
+ .jrnp-listing-header + main .detail-hero h1{font-size:clamp(40px,10.3vw,51px)}
+}
+@media(prefers-reduced-motion:reduce){.jrnp-listing-header .desktop-nav a{transition:none}}

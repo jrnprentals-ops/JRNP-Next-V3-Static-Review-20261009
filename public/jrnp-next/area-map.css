@@ -1,0 +1,20 @@
+/* Scoped JRNP Next approximate-area map. New design only; no legacy presentation dependencies. */
+.jrnp-area{max-width:1500px;margin:0 auto 105px;padding:0 8%}
+.jrnp-area-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:7%;align-items:center;border-top:1px solid #d9dfd5;padding-top:65px}
+.jrnp-area-copy h2{font:400 clamp(37px,4vw,65px)/1.12 Georgia,serif;letter-spacing:-.04em;color:#1b3426;margin:16px 0 22px}
+.jrnp-area-copy p:not(.kicker){font-size:15px;line-height:1.75;color:#59685c;max-width:500px}
+.jrnp-area-copy .jrnp-area-sub{font-size:13px;color:#6c776e}
+.jrnp-area-framebox{background:#e2e7df;min-height:380px;border:1px solid #d6ddd4}
+.jrnp-area iframe{display:block;width:100%;height:430px;border:0;background:#e9ede6}
+.jrnp-area-link{display:inline-block;border-bottom:1px solid #7a8b7a;color:#1c3c29;font-size:12px;font-weight:700;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;margin-top:23px;padding-bottom:8px}
+.jrnp-area-link:focus-visible{outline:3px solid #b6a16f;outline-offset:5px}
+.jrnp-area-meta{margin:0;padding:12px 0 0;color:#708072;font-size:12px;line-height:1.6}
+@media(max-width:950px){.jrnp-area{padding:0 8% 70px;margin-bottom:10px}.jrnp-area-layout{grid-template-columns:1fr;gap:24px;padding-top:55px}.jrnp-area iframe{height:430px}}
+@media(max-width:600px){.jrnp-area{padding:0 22px 65px}.jrnp-area-layout{padding-top:40px}.jrnp-area-framebox{min-height:260px}.jrnp-area iframe{height:290px}.jrnp-area-copy h2{font-size:43px}}
+
+.jrnp-map-fallback{display:block;padding:12px 15px;background:#f0f3ed;color:#254b37;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.jrnp-neighborhood-guide{margin-top:24px;display:grid;gap:13px}
+.jrnp-neighborhood-detail{border-top:1px solid #dbe3d8;padding-top:12px}
+.jrnp-neighborhood-detail h3{font-size:14px;color:#244632;font-weight:700;margin:0 0 6px}
+.jrnp-area-copy .jrnp-neighborhood-detail p,.jrnp-area-copy .jrnp-neighborhood-note{font-size:13px;line-height:1.6;margin:0;color:#59685c}
+.jrnp-area-copy .jrnp-neighborhood-note{margin-top:5px;font-style:italic}

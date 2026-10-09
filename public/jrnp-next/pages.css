@@ -1,0 +1,67 @@
+/* JRNP Next owned editorial pages — approved sage/ivory/charcoal/serif design. */
+.jrnp-page{background:#f4f6f0;color:#213b29}
+.jrnp-page-hero{background:#e8ede4;padding:90px 8% 82px}
+.jrnp-page-hero h1{font:400 clamp(59px,8vw,122px)/.99 Georgia,serif;letter-spacing:-.065em;max-width:1160px;margin:20px 0 28px;color:#1a3324}
+.jrnp-page-hero h1 em{font-weight:400;color:#8f7d5a}
+.jrnp-page-hero>p:last-child{font-size:18px;line-height:1.8;color:#56705a;max-width:710px}
+.jrnp-page-back{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:.16em;margin-bottom:44px;border-bottom:1px solid #a6ba9f;padding:0 0 10px}
+.jrnp-page-content{max-width:1450px;margin:0 auto;padding:95px 8%}
+.jrnp-page-content h2{font:400 clamp(37px,4.7vw,67px)/1.1 Georgia,serif;letter-spacing:-.045em;color:#1f3d2b;margin:13px 0 25px}
+.jrnp-page-content h3{font:400 30px/1.2 Georgia,serif;letter-spacing:-.025em;margin:0 0 18px}
+.jrnp-page-content p,.jrnp-page-content li{font-size:15px;line-height:1.85;color:#5e7361}
+.jrnp-page-split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:9%;align-items:center;margin:0 0 80px}
+.jrnp-page-photo{aspect-ratio:4/3;object-fit:cover;width:100%;height:auto;display:block}
+.jrnp-page-panel{background:#fff;border:1px solid #dbe4d7;padding:35px;min-width:0}
+.jrnp-page-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:38px 0 65px}
+.jrnp-page-grid article{background:#fff;border:1px solid #dbe4d7;padding:32px;min-width:0}
+.jrnp-page-grid article h3{font-size:29px;margin:22px 0 9px}
+.jrnp-page-grid article>span{font-size:10px;letter-spacing:.15em;color:#8f7854}
+.jrnp-page-grid article p{font-size:13px;line-height:1.7}
+.jrnp-page-cta{display:inline-flex;align-items:center;justify-content:center;background:#20442e;color:#fff;padding:18px 25px;min-height:55px;border:0;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.jrnp-page-cta:hover{background:#315b3c}
+.jrnp-page-cta:focus-visible,.jrnp-page a:focus-visible,.jrnp-page button:focus-visible{outline:3px solid #be9d61;outline-offset:3px}
+.jrnp-page-copy{font-size:13px;color:#42644b;text-decoration:underline;text-underline-offset:5px;overflow-wrap:anywhere}
+.jrnp-page-form{display:grid;gap:17px}
+.jrnp-page-form label{display:grid;gap:8px;color:#365542;font-size:10px;letter-spacing:.12em;font-weight:700;text-transform:uppercase}
+.jrnp-page-form input,.jrnp-page-form select,.jrnp-page-form textarea{border:1px solid #c6d7c2;background:#fbfcf8;color:#243f2c;padding:16px;min-width:0;width:100%;font:15px Arial,Helvetica,sans-serif;line-height:1.5;border-radius:0}
+.jrnp-page-form textarea{min-height:135px;resize:vertical}
+.jrnp-page-disclosure{margin-top:12px;color:#617964;font-size:12px!important;line-height:1.7!important}
+.jrnp-page-contact-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:35px;align-items:start}
+.jrnp-page-faq{display:grid;gap:12px;margin:35px 0}
+.jrnp-page-faq details{background:#fff;border:1px solid #d7e4d6;padding:0 25px}
+.jrnp-page-faq summary{padding:22px 0;cursor:pointer;font-size:17px;font-weight:600;color:#2c5035;line-height:1.5}
+.jrnp-page-faq details p{margin:0 0 25px;font-size:14px}
+.jrnp-page-policy{border-top:1px solid #d2ddcf;padding:28px 0}
+.jrnp-page-policy h3{font-size:28px}
+.jrnp-page-policy p{margin-bottom:10px}
+.jrnp-page-nav{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.jrnp-page-nav a{background:#e8efe4;padding:15px 21px;font-size:12px;font-weight:700;color:#274934;text-decoration:none}
+.jrnp-page-warn{background:#ecf3e8;border-left:3px solid #88a38c;padding:20px 25px;font-size:13px;line-height:1.7;color:#496b50}
+.jrnp-page footer a{color:inherit}
+@media(max-width:950px){.jrnp-page-split,.jrnp-page-contact-layout{grid-template-columns:1fr;gap:28px}.jrnp-page-grid{grid-template-columns:1fr 1fr}.jrnp-page-content{padding:65px 6%}}
+@media(max-width:600px){.jrnp-page-hero{padding:45px 22px 52px}.jrnp-page-hero h1{font-size:clamp(47px,12vw,69px)}.jrnp-page-hero>p:last-child{font-size:15px}.jrnp-page-content{padding:55px 22px}.jrnp-page-grid{grid-template-columns:1fr}.jrnp-page-grid article{padding:25px}.jrnp-page-panel{padding:26px}.jrnp-page-faq details{padding:0 18px}.jrnp-page-split{margin-bottom:50px}}
+
+/* Distinct About-page host introduction within the existing JRNP Next guest layout. */
+.jrnp-page-hosts{padding:clamp(30px,5vw,62px);margin:5px 0 80px;background:#e8eee6;border:1px solid #d6e2d2}
+.jrnp-about-host-heading{margin-bottom:34px}
+.jrnp-about-host-heading h2{font:400 clamp(38px,4.6vw,64px)/1.15 Georgia,serif;letter-spacing:-.04em;color:#203b29;margin:12px 0 17px;max-width:860px}
+.jrnp-about-host-heading>p:last-child{max-width:760px;font-size:14px;line-height:1.75;color:#526754}
+.jrnp-page-hosts .hosts-portrait{aspect-ratio:4/5}
+.jrnp-page-hosts .hosts-card-content{padding:24px}
+@media(max-width:650px){.jrnp-page-hosts{padding:25px 17px;margin:6px 0 60px}.jrnp-about-host-heading h2{font-size:clamp(33px,8vw,47px)}.jrnp-about-host-heading h2 em{white-space:normal}.jrnp-page-hosts .hosts-card-content{padding:22px 20px}}
+
+/* Compact About-page portraits use the same verified original photographs, with no bulky photo cards. */
+.jrnp-page-hosts{padding:clamp(34px,4.5vw,57px);background:radial-gradient(ellipse at 88% 0%,#f3f6f0,#e8eee6 66%);margin:5px 0 67px}
+.jrnp-page-hosts .hosts-cards{max-width:1140px;gap:20px}
+.jrnp-page-hosts .hosts-card{padding:22px 10px 20px 15px;border:0;background:transparent}
+.jrnp-page-hosts .hosts-portrait{width:173px;height:173px;aspect-ratio:1/1;border-radius:50%;overflow:visible}
+.jrnp-page-hosts .hosts-card-content{padding:0}
+.jrnp-page-hosts .hosts-card h3{font-size:clamp(25px,2.45vw,34px)}
+.jrnp-page-faq details{transition:border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.jrnp-page-faq details[open]{background:#fbfdf8;border-color:#b0c6ac;box-shadow:0 9px 24px #1b3f2710}
+.jrnp-page-faq details[open]>p{animation:jrnp-faq-answer .24s ease-out both}
+.jrnp-page-faq summary:hover{color:#1b7444}
+@keyframes jrnp-faq-answer{from{opacity:.6;transform:translateY(-5px)}to{opacity:1;transform:none}}
+@media(max-width:1100px){.jrnp-page-hosts .hosts-card{padding:19px 11px;gap:23px;justify-items:center;text-align:center}.jrnp-page-hosts .hosts-portrait{width:164px;height:164px}}
+@media(max-width:650px){.jrnp-page-hosts{padding:26px 21px 32px}.jrnp-page-hosts .hosts-card{padding:20px 10px 23px}.jrnp-page-hosts .hosts-portrait{width:153px;height:153px}.jrnp-page-hosts .hosts-card h3{font-size:30px}.jrnp-page-hosts .hosts-card-content{padding:0}.jrnp-page-hosts .hosts-card+.hosts-card{border-top:1px solid #cddccc}}
+@media(prefers-reduced-motion:reduce){.jrnp-page-faq details,.jrnp-page-faq details[open]>p{transition:none!important;animation:none!important}}

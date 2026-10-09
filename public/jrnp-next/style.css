@@ -281,3 +281,25 @@ input[type="date"]:focus-visible,.jrnp-page-form input:focus-visible,.jrnp-page-
 @media(prefers-reduced-motion:reduce){
   .hero-written .hero-script-line,.jrnp-ink-ready,.jrnp-gold-script .jrnp-ink-ready,.jrnp-page-gold-script .jrnp-ink-ready{animation:none!important;-webkit-clip-path:none!important;clip-path:none!important}
 }
+/* Public stay-range calendar. Green, white, and gold. Does not book. */
+.range-calendar{max-width:28rem;margin:0 0 1.25rem;padding:1rem;border:1px solid #d9d1bf;border-radius:.6rem;background:#fff;color:#15261f}
+.range-calendar-head{display:grid;grid-template-columns:2.5rem 1fr 2.5rem;align-items:center;margin-bottom:.75rem}
+.range-calendar-label,.range-calendar-status{margin:0}
+.range-calendar-label{text-align:center;font-weight:700}
+.range-calendar-nav,.range-calendar-day{border:1px solid transparent;background:#fff;color:#15261f;border-radius:.35rem}
+.range-calendar-nav{width:2.5rem;height:2.5rem;border-color:#d9d1bf}
+.range-calendar-nav:disabled,.range-calendar-day:disabled{opacity:.35}
+.range-calendar-week,.range-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.25rem}
+.range-calendar-week{margin-bottom:.35rem;color:#a48a4c;font-size:.75rem;letter-spacing:.04em;text-align:center}
+.range-calendar-day,.range-calendar-empty{min-height:2.5rem}
+.range-calendar-day.is-today{border-color:#a48a4c}
+.range-calendar-day.is-between{background:#e7f0e4}
+.range-calendar-day.is-start,.range-calendar-day.is-end{background:#15261f;color:#fff}
+.range-calendar-day:focus-visible,.range-calendar-nav:focus-visible{outline:2px solid #a48a4c;outline-offset:2px}
+.range-calendar-status{margin-top:.75rem;color:#686a5e;font-size:.92rem}
+/* Listing form button defaults must not recolor calendar navigation or unselected dates. */
+.detail-aside .range-calendar-nav,.detail-aside .range-calendar-day{padding:0;border:1px solid transparent;background:#fff;color:#15261f;font-size:13px;text-transform:none;letter-spacing:0;line-height:1.2}
+.detail-aside .range-calendar-nav{border-color:#d9d1bf}
+.detail-aside .range-calendar-day.is-today{border-color:#a48a4c}
+.detail-aside .range-calendar-day.is-between{background:#e7f0e4}
+.detail-aside .range-calendar-day.is-start,.detail-aside .range-calendar-day.is-end{background:#15261f;color:#fff}

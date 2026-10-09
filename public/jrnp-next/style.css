@@ -4,10 +4,10 @@
 /* Auto-playing word reveal; keeps the approved JRNP Next hero typography unchanged. */
 /* Full-headline handwriting reveal. A generous script line box prevents descenders (including y) from being clipped. */
 .hero h1.hero-written{font-family:"Snell Roundhand","Brush Script MT","Segoe Script","Bradley Hand",cursive;font-weight:400;font-size:clamp(68px,8.6vw,122px);line-height:1.12;letter-spacing:-.025em;overflow:visible;margin:12px 0 13px}
-.hero-written .hero-script-line{display:block;width:max-content;max-width:100%;padding:.08em .10em .22em .055em;margin:-.07em 0 -.12em -.055em;white-space:nowrap;clip-path:inset(-.22em 100% -.45em -.22em);animation:jrnp-handwritten-reveal 2s cubic-bezier(.12,.31,.18,1) .25s both}
+.hero-written .hero-script-line{display:block;width:max-content;max-width:100%;padding:.08em .10em .22em .055em;margin:-.07em 0 -.12em -.055em;white-space:nowrap;-webkit-clip-path:inset(-.22em 100% -.45em -.22em);clip-path:inset(-.22em 100% -.45em -.22em);animation:jrnp-handwritten-reveal 2s cubic-bezier(.12,.31,.18,1) .25s both}
 .hero-written .hero-script-line:nth-child(2){animation-duration:2.2s;animation-delay:2.05s}
 .hero-written .hero-script-line em{font-style:normal;font-weight:400;color:#e1c28c}
-@keyframes jrnp-handwritten-reveal{0%{clip-path:inset(-.22em 100% -.45em -.22em)}99%{clip-path:inset(-.22em 0% -.45em -.22em)}100%{clip-path:none}}
+@keyframes jrnp-handwritten-reveal{0%{-webkit-clip-path:inset(-.22em 100% -.45em -.22em);clip-path:inset(-.22em 100% -.45em -.22em)}100%{-webkit-clip-path:inset(-.22em 0% -.45em -.22em);clip-path:inset(-.22em 0% -.45em -.22em)}}
 @media(max-width:700px){.hero h1.hero-written{font-size:clamp(50px,11.7vw,84px);line-height:1.24;margin:25px 0 35px}}
 @media(prefers-reduced-motion:reduce){.hero-written .hero-script-line{animation:none;clip-path:none}}
 
@@ -87,9 +87,9 @@ footer.footer .footer-invite-link{display:inline-flex;align-items:center;justify
 
 /* Handwritten appearance/reveal for all large gold typographic accents; each activates when entering the viewport. */
 .intro-grid h2 em,.section-heading h2 em,.finder-heading h2 em,.destinations h2 em,.closing h2 em,.footer-invite h2 em{font-family:"Snell Roundhand","Brush Script MT","Segoe Script","Bradley Hand",cursive;font-style:normal;font-weight:400;font-size:1.06em;letter-spacing:-.035em;display:inline-block;padding:0 .06em .15em .025em;white-space:nowrap;max-width:100%;vertical-align:baseline;color:#c4a16f;line-height:1.08}
-.jrnp-ink-ready{clip-path:inset(-.2em 100% -.45em -.2em);animation:none}
+.jrnp-ink-ready{-webkit-clip-path:inset(-.2em 100% -.45em -.2em);clip-path:inset(-.2em 100% -.45em -.2em);animation:none}
 .jrnp-ink-ready.jrnp-ink-visible{animation:jrnp-gold-handwrite 1.75s cubic-bezier(.14,.33,.19,1) .15s both}
-@keyframes jrnp-gold-handwrite{0%{clip-path:inset(-.2em 100% -.45em -.2em)}99%{clip-path:inset(-.2em 0% -.45em -.2em)}100%{clip-path:none}}
+@keyframes jrnp-gold-handwrite{0%{-webkit-clip-path:inset(-.2em 100% -.45em -.2em);clip-path:inset(-.2em 100% -.45em -.2em)}100%{-webkit-clip-path:inset(-.2em 0% -.45em -.2em);clip-path:inset(-.2em 0% -.45em -.2em)}}
 @media(prefers-reduced-motion:reduce){.jrnp-ink-ready{clip-path:none!important;animation:none!important}.collection .property-card,.footer-social-links a{transition:none!important}.collection .property-card:hover{transform:none}}
 
 /* Personally hosted booking journey: one clear explanation between the homes and the destinations. */
@@ -223,7 +223,7 @@ input[type="date"]:focus-visible,.jrnp-page-form input:focus-visible,.jrnp-page-
 /* Gold handwritten accent is present without JS; motion enhances only. */
 .jrnp-page-gold-script{font:400 19px/1.4 Georgia,serif;color:#9a7842;margin:0 0 12px}
 .jrnp-page-gold-script em{display:inline-block;white-space:nowrap;padding:0 .08em .15em .02em;font:400 1.35em/1.2 "Snell Roundhand","Brush Script MT","Segoe Script",cursive;color:#bc995e}
-.jrnp-gold-script .jrnp-ink-ready,.jrnp-page-gold-script .jrnp-ink-ready{clip-path:none}
+.jrnp-gold-script .jrnp-ink-ready,.jrnp-page-gold-script .jrnp-ink-ready{-webkit-clip-path:inset(-.2em 100% -.45em -.2em);clip-path:inset(-.2em 100% -.45em -.2em)}
 .jrnp-gold-script .jrnp-ink-ready.jrnp-ink-visible,.jrnp-page-gold-script .jrnp-ink-ready.jrnp-ink-visible{animation:jrnp-gold-handwrite .85s ease-out both}
 @media(prefers-reduced-motion:reduce){.jrnp-gold-script em,.jrnp-page-gold-script em{animation:none!important;clip-path:none!important}}
 
@@ -268,3 +268,16 @@ input[type="date"]:focus-visible,.jrnp-page-form input:focus-visible,.jrnp-page-
 @media(max-width:1120px){.jrnp-subpage-header .desktop-nav{display:none}.jrnp-subpage-menu{display:block}}
 @media(max-width:700px){.jrnp-subpage-header{gap:8px}.jrnp-subpage-header .header-cta{font-size:11px;padding:12px 10px}}
 @media(max-width:385px){.jrnp-subpage-menu summary{padding:0 8px;gap:5px}.jrnp-subpage-header .header-cta{font-size:10px;padding:11px 9px}}
+
+
+/* JRNP Next touch-screen handwriting parity: faster, WebKit-safe reveal only. */
+@media(max-width:700px){
+  .hero-written .hero-script-line{animation-duration:1.05s;animation-delay:.10s}
+  .hero-written .hero-script-line:nth-child(2){animation-duration:1.15s;animation-delay:.87s}
+  .jrnp-ink-ready.jrnp-ink-visible{animation-duration:1.05s;animation-delay:0s}
+  .jrnp-gold-script .jrnp-ink-ready.jrnp-ink-visible,.jrnp-page-gold-script .jrnp-ink-ready.jrnp-ink-visible{animation-duration:.95s;animation-delay:0s}
+}
+/* Keep accessibility preferences and no-JS content fully readable. */
+@media(prefers-reduced-motion:reduce){
+  .hero-written .hero-script-line,.jrnp-ink-ready,.jrnp-gold-script .jrnp-ink-ready,.jrnp-page-gold-script .jrnp-ink-ready{animation:none!important;-webkit-clip-path:none!important;clip-path:none!important}
+}

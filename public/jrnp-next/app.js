@@ -71,6 +71,21 @@
           }
         },{threshold:.05,rootMargin:'0px 0px 60px 0px'});
         touchTriggers.forEach((value,trigger)=>observer.observe(trigger));
+        // Touch scrolling on WebKit sometimes queues an observer notification late.
+        // Reveal immediately on scrolling without changing desktop hover behavior.
+        const revealTouchInkInView=()=>{
+          for(const [trigger,nodes] of touchTriggers){
+            const box=trigger.getBoundingClientRect();
+            if(box.width&&box.height&&box.bottom>=0&&box.top<=innerHeight+60){
+              for(const node of nodes)reveal(node);
+              observer.unobserve(trigger);
+              touchTriggers.delete(trigger);
+            }
+          }
+        };
+        window.addEventListener('scroll',revealTouchInkInView,{passive:true});
+        window.addEventListener('resize',revealTouchInkInView,{passive:true});
+        window.requestAnimationFrame(revealTouchInkInView);
       }else{
         for(const nodes of touchTriggers.values())nodes.forEach(reveal);
       }
@@ -164,6 +179,8 @@
       fade.alt='';
       fade.setAttribute('aria-hidden','true');
       state.image.parentElement.appendChild(fade);
+      // Commit the first opacity frame before toggling so iOS WebKit crossfades reliably.
+      void fade.offsetWidth;
       window.requestAnimationFrame(()=>fade.classList.add('is-visible'));
       window.setTimeout(()=>{setPhoto(state,next);fade.remove();state.loading=false},850);
     };

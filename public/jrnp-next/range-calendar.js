@@ -1,6 +1,5 @@
-/* JRNP Next property calendar — read-only availability preview.
- * Blocks unavailable and unverified nights; never creates a reservation.
- * Production must substitute a reviewed read-only live availability adapter. */
+/* JRNP Next property calendar — read-only live daily rates/occupancy.
+ * Never creates bookings; unverified dates remain disabled. */
 (function(){"use strict";
 var root=document.getElementById("range-calendar"),checkin=document.getElementById("checkin"),checkout=document.getElementById("checkout");
 if(!root||!checkin||!checkout)return;
@@ -10,7 +9,7 @@ var weekday=["Su","Mo","Tu","We","Th","Fr","Sa"];
 var today=startOfDay(new Date());
 var maxMonth=new Date(today.getFullYear(),today.getMonth()+18,1);
 var cursor=new Date(today.getFullYear(),today.getMonth(),1);
-var start=null,end=null,writing=false,inventory=null,minimumNights=1,loadState="loading",lastError="";
+var start=null,end=null,writing=false,inventory=null,minimumNights=1,loadState="loading",lastError="",calendarRequest=0,lastCheckedAt=0;
 root.innerHTML=[
 '<div class="range-calendar-head"><button type="button" class="range-calendar-nav" data-dir="-1" aria-label="Previous month">‹</button><p class="range-calendar-label" data-label></p><button type="button" class="range-calendar-nav" data-dir="1" aria-label="Next month">›</button></div>',
 '<div class="range-calendar-week" aria-hidden="true">'+weekday.map(function(day){return "<span>"+day+"</span>";}).join("")+'</div>',
@@ -37,7 +36,7 @@ root.addEventListener("keydown",function(event){
  event.preventDefault();
  if(next<today||next>=addMonths(maxMonth,1))return;
  cursor=new Date(next.getFullYear(),next.getMonth(),1);
- draw();
+ draw();loadCalendarWindow(false);
  var target=grid.querySelector('[data-date="'+iso(next)+'"]');
  if(target&&!target.disabled)target.focus();
 });
@@ -45,24 +44,30 @@ checkin.addEventListener("change",syncFromFields);
 checkout.addEventListener("change",syncFromFields);
 syncFromFields();
 document.addEventListener("DOMContentLoaded",syncFromFields,{once:true});
-fetch("/jrnp-next/data/availability-preview.json",{cache:"no-store"}).then(function(response){
- if(!response.ok)throw Error("Availability data could not be loaded");
- return response.json();
-}).then(function(data){
- if(!data||data.previewOnly!==true||!Array.isArray(data.properties)||Date.now()>Date.parse(data.expiresAt))throw Error("Availability snapshot has expired");
- var property=data.properties.find(function(item){return String(item.id)===propertyId;});
- if(!property||!Array.isArray(property.days))throw Error("No verified data for this property");
- inventory=new Map(property.days.map(function(day){return [day.date,day];}));
- minimumNights=Math.max(1,Number(property.minStay||1));
- var finalDate=parseISO(property.days[property.days.length-1]?.date);
- if(finalDate)maxMonth=new Date(finalDate.getFullYear(),finalDate.getMonth(),1);
- loadState="ready";
- validateInputs();
- draw();
-}).catch(function(error){
- loadState="unavailable";lastError=error.message||"Availability could not be verified";
- inventory=null;clearFields();draw();
-});
+function loadCalendarWindow(force){
+ if(!window.JRNPReadOnlyCalendar){
+  loadState="unavailable";lastError="Read-only availability service is not configured";inventory=null;clearFields();draw();return;
+ }
+ const from=iso(new Date(cursor.getFullYear(),cursor.getMonth()-1,1));
+ const to=iso(new Date(cursor.getFullYear(),cursor.getMonth()+4,1));
+ const monthLast=iso(new Date(cursor.getFullYear(),cursor.getMonth()+1,0));
+ if(!force&&inventory?.has(monthLast))return;
+ const current=++calendarRequest;
+ // Fail closed while checking the new month, never present stale green dates.
+ loadState="loading";inventory=null;draw();
+ window.JRNPReadOnlyCalendar.load([propertyId],from,to).then(data=>{
+  if(current!==calendarRequest)return;
+  const property=data.properties.find(p=>p.id===propertyId);
+  if(!property||!Array.isArray(property.days))throw Error("Property calendar response missing");
+  inventory=new Map(property.days.map(day=>[day.date,day]));
+  minimumNights=Math.max(1,Number(property.minStay||1));
+  lastCheckedAt=Date.now();loadState="ready";validateInputs();draw();
+ }).catch(error=>{
+  if(current!==calendarRequest)return;
+  loadState="unavailable";lastError="Read-only availability unavailable. Please try again.";inventory=null;clearFields();draw();
+ });
+}
+loadCalendarWindow(true);
 function isOpen(date){return inventory?.get(iso(date))?.available===true;}
 function nightsBetween(a,b){return Math.round((Date.UTC(b.getFullYear(),b.getMonth(),b.getDate())-Date.UTC(a.getFullYear(),a.getMonth(),a.getDate()))/86400000);}
 function isRangeOpen(a,b){
@@ -105,7 +110,7 @@ function setValue(input,date){
 function moveMonth(offset){
  var next=new Date(cursor.getFullYear(),cursor.getMonth()+offset,1);
  if(next<new Date(today.getFullYear(),today.getMonth(),1)||next>maxMonth)return;
- cursor=next;draw();
+ cursor=next;draw();loadCalendarWindow(false);
 }
 function draw(){
  label.textContent=cursor.toLocaleString("en-US",{month:"long",year:"numeric"});
@@ -121,7 +126,7 @@ function draw(){
 function dayButton(date){
  var button=document.createElement("button");button.type="button";button.className="range-calendar-day";
  var key=iso(date),day=inventory?.get(key),open=day?.available===true;
- var state=!inventory||!day?"unknown":open?"available":"blocked";
+ var state=date<today?"unknown":!inventory||!day?"unknown":open?"available":"blocked";
  button.dataset.date=key;button.setAttribute("role","gridcell");
  var number=document.createElement("span");number.className="range-date-num";number.textContent=String(date.getDate());button.appendChild(number);
  var price=document.createElement("small");price.className="range-date-price";
@@ -139,9 +144,9 @@ function dayButton(date){
 function summary(){
  if(loadState==="loading")return "Checking preview availability. Dates stay disabled until results are verified.";
  if(loadState!=="ready")return lastError+" — no dates can be selected.";
- if(start&&end)return "Arrival "+spoken(start)+", departure "+spoken(end)+". Rates shown are a dated preview; host confirmation required.";
+ if(start&&end)return "Arrival "+spoken(start)+", departure "+spoken(end)+". Read-only rates are estimates; host confirmation required.";
  if(start)return "Arrival "+spoken(start)+". Choose checkout; blocked nights cannot be selected. Minimum "+minimumNights+" nights.";
- return "Green = available in the dated preview; red = unavailable. Nightly estimates exclude fees and taxes. No reservation is being made.";
+ return "Green = available in read-only calendar; red = booked. Checked "+(lastCheckedAt?new Date(lastCheckedAt).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}):"recently")+". Rates exclude fees/taxes; no reservation is being made.";
 }
 function formatRate(amount){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:0,maximumFractionDigits:2}).format(amount);}
 function spoken(date){return date.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});}

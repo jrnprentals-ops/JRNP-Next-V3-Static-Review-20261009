@@ -1,6 +1,5 @@
-/* JRNP Next review-only homepage range calendar.
-   Read-only sanitized snapshot. Never treats this as a reservation/quote.
-   Production integration must replace the snapshot with a verified read-only API. */
+/* JRNP Next — read-only live daily calendar via approved public Supabase adapter.
+   Never creates booking, quote or payment; failure disables unavailable dates. */
 (()=>{"use strict";
 const form=document.getElementById("stay-search");
 const host=document.querySelector(".stay-finder");
@@ -20,14 +19,14 @@ const parse=s=>/^\d{4}-\d\d-\d\d$/.test(s||"")?new Date(Number(s.slice(0,4)),Num
 const plus=(date,n)=>new Date(date.getFullYear(),date.getMonth(),date.getDate()+n);
 const dollars=n=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:0,maximumFractionDigits:2}).format(Number(n));
 let month=new Date(today.getFullYear(),today.getMonth(),1);
-let start=null,end=null,loaded=null,lastMessage="";
+let start=null,end=null,loaded=null,lastMessage="",checkedAt=0,requestId=0;
 const view={};
 panel.innerHTML='<div class="hrc-head"><button type="button" class="hrc-nav" data-direction="-1" aria-label="Previous month">‹</button><strong data-month></strong><button type="button" class="hrc-nav" data-direction="1" aria-label="Next month">›</button></div><div class="hrc-week" aria-hidden="true">'+week.map(x=>"<span>"+x+"</span>").join("")+'</div><div class="hrc-grid" role="group" aria-label="Available dates" data-days></div><div class="hrc-legend"><span><i class="hrc-available"></i>Available</span><span><i class="hrc-blocked"></i>Booked</span><span><i class="hrc-selected"></i>Your dates</span><span><i class="hrc-unknown"></i>Not verified</span></div><p class="hrc-status" aria-live="polite" data-message></p>';
 view.label=panel.querySelector("[data-month]");
 view.grid=panel.querySelector("[data-days]");
 view.msg=panel.querySelector("[data-message]");
 host.classList.add("has-home-range");
-form.dataset.availabilityMode="snapshot";
+form.dataset.availabilityMode="read-only-live";
 function propertyList(){
  if(!loaded)return[];
  const allowed=destination.value==="lake"?["3"]:destination.value==="phoenix"?["1","2","4","5"]:["1","2","3","4","5"];
@@ -40,7 +39,7 @@ function dayInfo(date){
  const values=list.map(p=>p.lookup.get(key));
  const live=values.filter(d=>d&&d.available===true&&Number.isFinite(Number(d.rate)));
  if(live.length)return {state:"available",rate:Math.min(...live.map(d=>Number(d.rate))),all:list.length===1};
- if(values.every(Boolean))return {state:"blocked"};
+ if(values.every(d=>d&&d.verified===true))return {state:"blocked"};
  return {state:"unknown"};
 }
 function validRange(a,b){
@@ -59,7 +58,7 @@ function setInfoText(){
  if(!loaded)return "No verified calendar data. Dates cannot be selected.";
  if(start&&end)return iso(start)+" to "+iso(end)+" · "+validRange(start,end).length+" matching home(s). Read-only preview; host confirmation required.";
  if(start)return "Check-in "+iso(start)+". Choose a checkout date with no blocked nights.";
- return "Select your check-in date, then your checkout date. Pricing is a dated preview snapshot, not a confirmed quote.";
+ return "Select your check-in date, then checkout. Read-only calendar checked "+(checkedAt?new Date(checkedAt).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}):"recently")+"; rates are estimates, not a quote or reservation.";
 }
 function render(){
  view.label.textContent=month.toLocaleString("en-US",{month:"long",year:"numeric"});
@@ -113,27 +112,57 @@ function result(){
   else if(validRange(start,end).some(x=>x.id===p.id)){
    yes++;const nights=Math.round((Date.UTC(end.getFullYear(),end.getMonth(),end.getDate())-Date.UTC(start.getFullYear(),start.getMonth(),start.getDate()))/86400000);
    const rates=Array.from({length:nights},(_,n)=>Number(p.lookup.get(iso(plus(start,n)))?.rate||0));
-   row.textContent="Open in snapshot · "+dollars(rates.reduce((a,b)=>a+b,0))+" nightly-rate subtotal (excludes fees/taxes)";
+   row.textContent="Available in read-only calendar · "+dollars(rates.reduce((a,b)=>a+b,0))+" nightly-rate subtotal (excludes fees/taxes)";
    const link=new URL(card.href,location.href);link.searchParams.set("checkIn",iso(start));link.searchParams.set("checkOut",iso(end));link.searchParams.set("guests",String(count));card.href=link.pathname+link.search;
   }else row.textContent="Unavailable or below minimum stay for these dates";
   card.querySelector(".property-meta > div")?.appendChild(row);
  }
- hint.textContent=yes+" possible home(s) in the dated preview. Availability and pricing require host verification; no reservation has been made.";
+ hint.textContent=yes+" possible home(s) in the read-only calendar. Availability and pricing require host confirmation; no reservation has been made.";
 }
 panel.addEventListener("click",e=>{
  const nav=e.target.closest("[data-direction]");
- if(nav){month=new Date(month.getFullYear(),month.getMonth()+Number(nav.dataset.direction),1);lastMessage="";render();return;}
+ if(nav){month=new Date(month.getFullYear(),month.getMonth()+Number(nav.dataset.direction),1);lastMessage="";render();refreshMonth(false);return;}
  const day=e.target.closest("[data-date]");
  if(day&&!day.disabled)choose(parse(day.dataset.date));
 });
-toggle.addEventListener("click",()=>{panel.hidden=!panel.hidden;toggle.setAttribute("aria-expanded",String(!panel.hidden));if(!panel.hidden){lastMessage="";render();}});
+toggle.addEventListener("click",()=>{panel.hidden=!panel.hidden;toggle.setAttribute("aria-expanded",String(!panel.hidden));if(!panel.hidden){lastMessage="";render();refreshMonth(Date.now()-checkedAt>120000);}});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden){panel.hidden=true;toggle.setAttribute("aria-expanded","false");toggle.focus();}});
 for(const fieldEl of [destination,guests])fieldEl.addEventListener("change",()=>{start=null;end=null;lastMessage="";updateSelection();render();});
 form.addEventListener("submit",event=>{event.preventDefault();event.stopImmediatePropagation();if(!loaded||!start||!end){hint.textContent="Select a valid, available date range first.";return;}result();},{capture:true});
 render();
-fetch("/jrnp-next/data/availability-preview.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Calendar data unavailable");return r.json()}).then(data=>{
- if(data.previewOnly!==true||!Array.isArray(data.properties)||Date.now()>Date.parse(data.expiresAt))throw Error("Calendar snapshot is missing or has expired");
- loaded={...data,properties:data.properties.map(p=>({...p,id:String(p.id),lookup:new Map((p.days||[]).map(d=>[d.date,d]))}))};
- lastMessage="";render();
-}).catch(()=>{loaded=null;message("Availability data has expired or cannot be verified. Date selection is disabled until the calendar feed is restored.");render();});
+function refreshMonth(force){
+ if(!window.JRNPReadOnlyCalendar){
+  loaded=null;start=null;end=null;updateSelection();
+  message("Read-only calendar service unavailable. Dates cannot be selected.");render();return;
+ }
+ const from=iso(new Date(month.getFullYear(),month.getMonth(),1));
+ const to=iso(new Date(month.getFullYear(),month.getMonth()+4,1));
+ const lastDay=iso(new Date(month.getFullYear(),month.getMonth()+1,0));
+ if(!force&&loaded?.properties?.length===5&&loaded.properties.every(p=>p.lookup.has(lastDay)))return;
+ const current=++requestId;
+ // Invalidate any previously displayed rates before revalidation.
+ if(loaded)for(const p of loaded.properties)for(const date of [...p.lookup.keys()]){
+  if(date>=from&&date<to)p.lookup.delete(date);
+ }
+ lastMessage="Checking current read-only availability. Unverified dates cannot be selected.";
+ render();
+ window.JRNPReadOnlyCalendar.load(["1","2","3","4","5"],from,to).then(data=>{
+  if(current!==requestId)return;
+  const previous=loaded?.properties||[];
+  loaded={properties:data.properties.map(p=>{
+   const lookup=previous.find(o=>o.id===p.id)?.lookup||new Map();
+   for(const day of p.days)lookup.set(day.date,day);
+   return {...p,lookup};
+  })};
+  checkedAt=Date.now();
+  if(start&&dayInfo(start).state!=="available"){start=null;end=null;}
+  if(end&&(!start||!validRange(start,end).length))end=null;
+  updateSelection();lastMessage="";render();
+ }).catch(()=>{
+  if(current!==requestId)return;
+  loaded=null;checkedAt=0;start=null;end=null;updateSelection();
+  message("Live availability could not be verified. Dates are unavailable for selection until the read-only feed recovers.");render();
+ });
+}
+refreshMonth(true);
 })();

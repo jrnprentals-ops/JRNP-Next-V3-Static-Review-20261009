@@ -1,15 +1,18 @@
-# JRNP Next V3 — isolated frontend preview
+# JRNP Next V3 — isolated, read-only guest frontend preview
 
-This private GitHub repository contains only a read-only static snapshot of approved JRNP Next public pages. It was prepared from the Mac Mini LAN preview on 2026-10-09, with all 100 original property photos. Preview only; not the Mac Mini owner's active source. No backend, CMP, persistence, booking, Stripe, provider messaging or credentials are included.
+This PUBLIC GitHub repository contains only reviewed guest-facing HTML/CSS/JS and 100 original property photos for a separate Render noindex preview. It is NOT the Mac Mini frontend owner's authoritative source. No CMP private logic, host credentials, payment keys, guest records, or server-side booking code belongs here.
 
-All documents include noindex/nofollow. This snapshot omits an inaccessible `/jrnp-next/range-calendar.js` reference, retaining the native date inputs and date-order validation. It must not be promoted to production, treated as a complete booking platform, or treated as owner-source-frozen V3.
+## Preview-only public calendar
 
-Render static site config: publish `public/`, disable autoDeploy, and use a buildCommand that verifies all public listing files and the 100 original JPGs, then copies `public/jrnp-next/index.html` to `public/index.html`. Render onrender.com only, no domain assignment.
+The homepage is a single check-in → check-out range picker, while all five listing pages show green available dates, muted red blocked dates, nightly rate estimates, minimum-night rules, and a disabled gray/unverified state. Data loads on demand from the **existing** Supabase `jrnp-public-booking` public calendar endpoint using the browser-safe `sb_publishable_` key. Each GET includes `skipSync=1`: it only reads existing JRNP property and inventory records; it does not initiate imports, payment, booking, or any server-side writes. Internal response fields are stripped before rendering.
 
-## Read-only calendar visual review (October 9, 2026)
+The public pricing is a nightly estimate, not an all-in quote or reservation. Airbnb/Vrbo availability is only as current as the underlying already-imported inventory; final host verification is required. If API verification fails, dates become unselectable rather than falsely green. The former 12-hour preview-only JSON snapshot was removed. No public booking form can submit a reservation on this static preview; the quote/host CMP/payment backend remains separate and unverified.
 
-The homepage now presents a single date-range selector, and five listing calendars visualize muted-red booked dates, light-green available dates, and nightly estimates using `public/jrnp-next/data/availability-preview.json`. This is an **expiring, sanitized snapshot** of property/day/rate/availability only (no guest names, iCal URLs, private fees, payment credentials, or booking data). Invalid and blocked ranges are rejected and unverified dates are disabled. The quote and reservation backend remain unavailable on this static Render preview; no booking, payment, or database writes occur here.
+## Deployment and safety
 
-The snapshot **expires after 12 hours** by design. The calendar then disables selection rather than claiming stale dates are available. Production requires an independently reviewed, sanitized **read-only availability API** and a working quote/booking service. Do not reuse a broad service-role credential or expose private pricing logic in browser code. This branch is not the authoritative Mac Mini V3 source.
+Render static site URL: https://jrnp-next-v3-review-only-20261009.onrender.com/jrnp-next/
+Render autoDeploy OFF, no custom domain, no production DNS mutation, noindex/nofollow. The build copies `public/jrnp-next/index.html` to `public/index.html`; CDN root may cache previous versions for up to 5 minutes, so use `/jrnp-next/` for the freshest preview while validating.
 
-Review QA: `calendar-ui-qa.cjs` (12/12) plus the existing mobile-motion tests (10/10); screenshots and reports are kept locally outside published `public/` content.
+Do not promote this branch as a production booking app without full host CMP auth/persistence verification, iCal freshness controls, secure request-to-book flow, quote calculations and production release signoff. No Render paid plan required for the preview.
+
+Local QA: `calendar-ui-qa.cjs` passed 13/13 including blocked-date rejection and simulated API outage; `qa_fixed_mobile_motion.cjs` passed 10/10. These QA screenshots and scripts reside on iMac outside the Render published `public` tree.

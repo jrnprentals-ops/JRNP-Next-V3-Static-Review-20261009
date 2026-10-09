@@ -1,0 +1,68 @@
+/* JRNP Next verified-date calendar review UI: no restyling of other website sections. */
+.home-range-control{display:none}
+.stay-finder.has-home-range .legacy-date-field{display:none!important}
+.stay-finder.has-home-range .home-range-control{display:flex;min-width:0;flex-direction:column;justify-content:center;background:#fff;padding:12px 18px;gap:9px}
+.stay-finder.has-home-range .finder-form{grid-template-columns:minmax(190px,1.25fr) minmax(225px,1.55fr) minmax(96px,.58fr) auto}
+.home-range-label{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#526655}
+#home-range-toggle{border:0;background:transparent;color:#133f2d;text-align:left;font:500 clamp(14px,1.5vw,17px) Georgia,serif;line-height:1.35;cursor:pointer;padding:0 18px 0 0;position:relative;min-height:26px}
+#home-range-toggle:after{content:"▾";position:absolute;right:0;top:0;color:#a17d50}
+#home-range-toggle:focus-visible,.hrc-nav:focus-visible,.hrc-day:focus-visible{outline:3px solid #bb9562;outline-offset:2px}
+.home-range-panel{position:absolute;z-index:40;top:calc(100% - 3px);right:8%;width:min(570px,calc(100vw - 32px));background:#fffdfa;color:#173c2c;border:1px solid #e3e1d4;border-radius:14px;padding:22px 24px;box-shadow:0 22px 55px rgba(18,49,34,.18)}
+.home-range-panel[hidden]{display:none!important}
+.hrc-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.hrc-head strong{font:400 23px Georgia,serif;letter-spacing:-.025em;text-align:center}
+.hrc-nav{height:34px;width:36px;background:#f6f6f0;border:1px solid #e4e5dc;border-radius:6px;color:#244b35;font-size:23px;cursor:pointer;line-height:1}
+.hrc-nav:disabled{opacity:.3;cursor:not-allowed}
+.hrc-week,.hrc-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.hrc-week{color:#8e815f;text-align:center;font-size:11px;letter-spacing:.04em;margin-bottom:8px}
+.hrc-blank{min-height:65px}
+.hrc-day{position:relative;min-height:65px;padding:6px 2px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;border:1px solid #e5e8df;border-radius:8px;background:#fff;color:#31513d;cursor:pointer;font-family:inherit;transition:background-color .16s,border-color .16s;opacity:1}
+.hrc-day-num{font-size:15px;line-height:1;font-weight:700}
+.hrc-price{font-size:10px;line-height:1.15;font-weight:600;white-space:normal;text-align:center;color:#45634a}
+.hrc-available{background:#e7f3e6;border-color:#d4e5d2;color:#244a31}
+.hrc-available:hover:not(:disabled){background:#d6ebd3;border-color:#6e9b72}
+.hrc-blocked{background:#f7e2df;border-color:#edd1cc;color:#954d4b}
+.hrc-blocked .hrc-price{color:#a05d59}
+.hrc-unknown,.hrc-past{background:#f0f0eb;border-color:#e9e9e4;color:#a8aaa3}
+.hrc-unknown .hrc-price,.hrc-past .hrc-price{color:#a8aaa3}
+.hrc-day:disabled{cursor:not-allowed;opacity:1}
+.hrc-start,.hrc-end,.hrc-start.hrc-available,.hrc-end.hrc-available{background:#1b4b35;border-color:#1b4b35;color:#fff}
+.hrc-start .hrc-price,.hrc-end .hrc-price{color:#e8dcac}
+.hrc-between,.hrc-between.hrc-available{background:#c6dcc6;border-color:#b8d3b9}
+.hrc-legend{margin-top:17px;display:flex;flex-wrap:wrap;gap:10px 16px;color:#526157;font-size:11px}
+.hrc-legend span{display:flex;align-items:center;gap:5px}
+.hrc-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid #d9dbd3}
+.hrc-legend i.hrc-available{background:#e7f3e6}.hrc-legend i.hrc-blocked{background:#f7e2df}
+.hrc-legend i.hrc-selected{background:#1b4b35}.hrc-legend i.hrc-unknown{background:#f0f0eb}
+.hrc-status{margin:13px 0 0;color:#6a745f;font-size:12px;line-height:1.55}
+.stay-finder.has-home-range .finder-hint{clear:both}
+/* Property calendar shares the same verified-date language as the homepage. */
+.range-calendar-day{min-height:49px}
+.range-calendar-day.is-available{background:#e7f3e6;border-color:#d4e5d2;color:#244a31}
+.range-calendar-day.is-blocked{background:#f7e2df;border-color:#edd1cc;color:#954d4b;opacity:1;cursor:not-allowed}
+.range-calendar-day.is-unknown{background:#f0f0eb;border-color:#e9e9e4;color:#a8aaa3;opacity:1;cursor:not-allowed}
+.range-calendar-day.is-start,.range-calendar-day.is-end{background:#1b4b35;border-color:#1b4b35;color:#fff}
+.range-calendar-day .range-date-num{display:block;font-weight:700;font-size:13px}
+.range-calendar-day .range-date-price{display:block;font-size:10px;line-height:1.15;margin-top:2px;white-space:nowrap}
+.range-calendar-day.is-start .range-date-price,.range-calendar-day.is-end .range-date-price{color:#e8dcac}
+.range-calendar-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:11px;color:#617361}
+.range-calendar-legend span:before{content:"";width:9px;height:9px;display:inline-block;vertical-align:middle;border-radius:2px;margin-right:4px;background:#dde7dd}
+.range-calendar-legend .range-legend-blocked:before{background:#f0c0b9}
+.range-calendar-legend .range-legend-unknown:before{background:#deded7}
+@media(max-width:900px){
+ .stay-finder.has-home-range .finder-form{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .stay-finder.has-home-range .home-range-control{min-height:80px}
+ .home-range-panel{position:relative;top:auto;right:auto;max-width:100%;margin:14px 0 0;box-shadow:0 11px 25px rgba(18,49,34,.1)}
+}
+@media(max-width:540px){
+ .stay-finder.has-home-range .finder-form{grid-template-columns:1fr;gap:1px}
+ .stay-finder.has-home-range .home-range-control{padding:15px 17px}
+ .home-range-panel{width:100%;padding:13px 11px;border-radius:10px}
+ .hrc-head strong{font-size:20px}
+ .hrc-week,.hrc-grid{gap:3px}
+ .hrc-blank,.hrc-day{min-height:56px}
+ .hrc-day-num{font-size:13px}
+ .hrc-price{font-size:9px}
+ .hrc-legend{font-size:10px;gap:6px 9px}
+}
+@media(prefers-reduced-motion:reduce){.hrc-day{transition:none}}

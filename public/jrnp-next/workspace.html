@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#15261f">
+<title>JRNP Next — The Operations Workspace</title>
+<link rel="stylesheet" href="/jrnp-next/style.css">
+<link rel="stylesheet" href="/jrnp-next/command.css">
+<link rel="stylesheet" href="/jrnp-next/workspace.css">
+<link rel="stylesheet" href="/jrnp-next/workspace-cms.css">
+<script defer src="/jrnp-next/workspace-demo.js"></script>
+<script defer src="/jrnp-next/workspace.js"></script>
+<script defer src="/jrnp-next/motion.js"></script></head>
+<body class="workspace-body">
+<a class="skip" href="#workspace-main">Skip to the workspace</a>
+<div class="workspace-layout">
+<aside class="workspace-rail" aria-label="JRNP workspace">
+<a class="wordmark wordmark-original" href="/jrnp-next/" aria-label="JRNP Rentals home"><img src="/jrnp-next/assets/brand/logo-jrnp.png" width="586" height="472" alt="JRNP Rentals original gold roof logo" decoding="async"></a>
+<div class="workspace-rail-heading">MANAGEMENT / WORKSPACE</div>
+<nav aria-label="Operations modules" id="workspace-navigation">
+<button type="button" data-module="overview" class="active">Overview <span>01</span></button>
+<button type="button" data-module="bookings">Booking requests <span>02</span></button>
+<button type="button" data-module="calendar">Calendar &amp; turnovers <span>03</span></button>
+<button type="button" data-module="cleanings">Cleaning &amp; costs <span>04</span></button>
+<button type="button" data-module="messages">Guest messaging <span>05</span></button>
+<button type="button" data-module="listings">Listings &amp; photos <span>06</span></button>
+<button type="button" data-module="pricing">Pricing proposals <span>07</span></button>
+<button type="button" data-module="guides">Guest guides <span>08</span></button>
+<button type="button" data-module="reviews">Reviews <span>09</span></button>
+<button type="button" data-module="ai">AI drafting <span>10</span></button>
+<button type="button" data-module="automation">Automations <span>11</span></button>
+<button type="button" data-module="reports">Reports &amp; insights <span>12</span></button>
+<button type="button" data-module="system">System &amp; access <span>13</span></button>
+</nav>
+<div class="workspace-rail-bottom">
+<a href="/jrnp-next/command.html">← Command Center</a>
+<a href="/jrnp-next/">↗ Guest website</a>
+</div>
+</aside>
+<main id="workspace-main" class="workspace-main">
+<header class="workspace-topbar">
+<div>JRNP <span>/ THE NEW COMMAND CENTER</span></div>
+<div class="workspace-topbar-actions">
+<span class="workspace-state" id="workspace-state">LOCAL PREVIEW</span>
+<button type="button" id="workspace-explore-demo">Explore demo ↗</button>
+<button type="button" id="workspace-host-login" hidden>Secure host login ↗</button>
+<button type="button" id="workspace-sign-out" hidden>Sign out</button>
+<a href="/jrnp-next/">View website ↗</a>
+</div>
+</header>
+<div class="workspace-content">
+<section class="workspace-heading">
+<p class="kicker">THE JRNP WORKSPACE / OPERATIONS</p>
+<h1>Every detail.<br><em>One place.</em></h1>
+<p>Manage booking requests, create guest-experience drafts, review property operations and prepare smarter decisions—all within one cohesive green-and-white interface.</p>
+</section>
+<div class="workspace-truth" role="note">
+<strong>Staging-only workspace</strong>
+<span>Local test records are separate from actual JRNP reservations, messages and pricing. No live guest email, payment, booking, OTA change or production deployment occurs here.</span>
+</div>
+<section id="workspace-access" class="workspace-access" aria-labelledby="access-heading">
+<div class="workspace-access-intro">
+<p class="kicker">PROTECTED STAGING</p>
+<h2 id="access-heading">Secure access.</h2>
+<p id="workspace-access-status" role="status" aria-live="polite">Checking local staging availability…</p>
+</div>
+<form id="workspace-login" hidden>
+<label for="workspace-password">Staging admin password</label>
+<div class="workspace-login-row"><input type="password" id="workspace-password" autocomplete="current-password" maxlength="1024" required><button type="submit">Unlock workspace ↗</button></div>
+<p id="workspace-login-error" role="alert" hidden></p>
+</form>
+</section>
+<section id="workspace-app" class="workspace-app" aria-label="Operations workspace" hidden>
+<div class="workspace-dashboard-top">
+<div><p class="kicker" id="workspace-eyebrow">01 / OPERATIONAL OVERVIEW</p><h2 id="workspace-title">Your operational snapshot.</h2><p id="workspace-description">All preview records in one secured staging workspace.</p></div>
+<button type="button" id="workspace-refresh">Refresh workspace ↗</button>
+</div>
+<p class="workspace-feedback" id="workspace-feedback" role="status" aria-live="polite"></p>
+<div id="workspace-panel"></div>
+</section>
+<section id="workspace-inactive" class="workspace-inactive" aria-label="Workspace preview when not signed in">
+<p class="kicker">WORKSPACE ARCHITECTURE</p>
+<h2>Built around your five homes.</h2>
+<p>Open all 13 modules in a fully synthetic interactive demonstration. No guest records, real booking changes or provider actions are available without protected host access.</p>
+<button type="button" id="workspace-inactive-demo" class="workspace-button">Explore all 13 modules ↗</button>
+<div class="workspace-preview-grid">
+<div><span>01</span><h3>Guest care</h3><p>Requests, message drafts, guest guides and feedback</p></div>
+<div><span>02</span><h3>Property care</h3><p>Turnovers, listing changes, calendar and cleaning plans</p></div>
+<div><span>03</span><h3>Business intelligence</h3><p>Rate proposals, automation plans, and performance</p></div>
+</div>
+</section>
+<footer class="workspace-footer">
+<span>JRNP RENTALS · THE NEW GREEN &amp; WHITE WORKSPACE</span>
+<span>No live actions are enabled in this build.</span>
+</footer>
+</div>
+</main>
+</div>
+</body>
+</html>

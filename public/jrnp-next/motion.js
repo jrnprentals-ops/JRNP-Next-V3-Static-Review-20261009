@@ -15,41 +15,7 @@
       }
     },{threshold:.05});
     for(const node of ink){node.classList.add('jrnp-ink-ready');inkObserver.observe(node);}
-    // iOS WebKit can delay IntersectionObserver delivery after momentum scrolling.
-    // A passive viewport check starts the same reveal on the next visible frame.
-    let pendingInkCheck=false;
-    const showVisibleInk=()=>{
-      pendingInkCheck=false;
-      for(const node of ink){
-        if(node.classList.contains('jrnp-ink-visible'))continue;
-        const rect=node.getBoundingClientRect();
-        if(rect.width&&rect.height&&rect.bottom>=0&&rect.top<=innerHeight+40){
-          node.classList.add('jrnp-ink-visible');
-          inkObserver.unobserve(node);
-        }
-      }
-    };
-    const queueInkCheck=()=>{
-      if(pendingInkCheck)return;
-      pendingInkCheck=true;
-      window.requestAnimationFrame(showVisibleInk);
-    };
-    window.addEventListener('scroll',queueInkCheck,{passive:true});
-    window.addEventListener('resize',queueInkCheck,{passive:true});
-    queueInkCheck();
   }
-  // Mobile Safari restores pages from BFCache without replaying CSS on navigation back.
-  // Replay only on restored pages; never override the user's Reduce Motion preference.
-  window.addEventListener('pageshow',event=>{
-    if(!event.persisted)return;
-    const lines=document.querySelectorAll('.hero-written .hero-script-line');
-    if(!lines.length)return;
-    for(const line of lines)line.style.animation='none';
-    void document.body.offsetWidth;
-    window.requestAnimationFrame(()=>{
-      for(const line of lines)line.style.removeProperty('animation');
-    });
-  });
   const selectors=[
     '.collection .property-card','.hosts-section .hosts-card','.how-step',
     '.jrnp-page-content .jrnp-page-panel','.jrnp-page-grid article',

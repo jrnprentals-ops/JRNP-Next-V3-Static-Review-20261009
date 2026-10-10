@@ -296,3 +296,7 @@
  .jrnp-listing-header + main .detail-hero h1{font-size:clamp(40px,10.3vw,51px)}
 }
 @media(prefers-reduced-motion:reduce){.jrnp-listing-header .desktop-nav a{transition:none}}
+
+/* Source-backed calendar rates fit the existing day cells without changing geometry. */
+.jrnp-range-day.has-nightly-price{flex-direction:column;gap:4px}
+.jrnp-range-nightly-price{font-size:9px;font-weight:400;white-space:nowrap}

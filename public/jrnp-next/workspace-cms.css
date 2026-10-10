@@ -1,0 +1,74 @@
+/* JRNP Next protected property editor: existing brand tokens and layout only. */
+
+.workspace-cms{display:grid;gap:16px}
+.workspace-cms>.workspace-field{max-width:650px}
+.workspace-cms-slot{margin-top:6px}
+.workspace-cms-form{max-width:900px}
+.workspace-cms-form>h3{font:400 clamp(24px,3vw,36px)/1.2 Georgia,serif;margin:2px 0 4px;color:#233e2c}
+.workspace-cms-state{font-size:12px;line-height:1.6;color:#44634b;margin:0;padding:12px 15px;border-left:3px solid #c5a779;background:#f3f6ee}
+.workspace-cms-form textarea{width:100%}
+.workspace-cms-form .workspace-form-action{justify-content:flex-start}
+.workspace-cms-form .workspace-form-action button{flex:1 1 155px;min-height:45px}
+.workspace-cms-form .workspace-form-action button:last-child{flex:1 1 190px}
+.workspace-cms-result{color:#285b37;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+.workspace-cms-preview{margin-top:12px}
+.workspace-cms-preview[hidden]{display:none!important}
+.workspace-cms-preview-copy p{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}
+.workspace-cms-previous{border:1px solid #dce4d9;background:#f6f9f4;margin-top:18px;padding:16px}
+.workspace-cms-previous>summary{cursor:pointer;font-size:12px;font-weight:700;color:#37593f;padding:5px 0}
+.workspace-cms-previous[open]>div{margin-top:20px}
+@media(max-width:600px){.workspace-cms{padding:19px}.workspace-cms-form .workspace-form-action{display:grid;grid-template-columns:1fr}.workspace-cms-previous{padding:13px}}
+@media(prefers-reduced-motion:reduce){.workspace-cms *{animation:none!important;transition:none!important}}
+
+/* Protected owner-only CMS subtools; original 13-module demo/nav stays unchanged. */
+.workspace-cms-subnav{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 20px}
+.workspace-cms-subnav .workspace-button{flex:1 1 145px;min-width:0}
+.workspace-cms-subnav .workspace-cms-tab-active{border-bottom:3px solid #c5a779}
+.workspace-cms-catalog-top{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin:7px 0 15px}
+.workspace-cms-catalog-top>.workspace-field{flex:1 1 235px}
+.workspace-cms-catalog-top>.workspace-button{flex:0 0 auto}
+.workspace-cms-catalog-editor{margin-top:16px}
+.workspace-cms-property-links{border:1px solid #d8e2d7;display:grid;gap:10px;padding:15px}
+.workspace-cms-property-links legend{font-size:12px;font-weight:700;color:#355441}
+.workspace-cms-property-links label{display:flex;align-items:center;gap:9px;font-size:13px;color:#385842}
+.workspace-cms-property-links input{width:auto}
+.workspace-cms-markdown{font:13px/1.65 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%}
+@media(max-width:430px){.workspace-cms-subnav{display:grid;grid-template-columns:1fr}.workspace-cms-catalog-top>.workspace-button{width:100%}}
+
+/* Owner-only Smart Rates integrated into existing Pricing section. */
+.workspace-rates{margin-bottom:24px}
+.workspace-rates>.workspace-field{max-width:550px;margin:16px 0}
+.workspace-rates-grid{display:grid;grid-template-columns:minmax(260px,1fr) minmax(280px,1.1fr);gap:18px;margin:20px 0}
+.workspace-rates-form,.workspace-rates-evidence{padding:20px;border:1px solid #d8e2d7;background:#f9fbf8}
+.workspace-rates-form h3,.workspace-rates-evidence h3{font:400 27px Georgia,serif}
+.workspace-rates-warning{font-size:12px;line-height:1.7;border-left:3px solid #c5a779;background:#f6f2e8;padding:12px;color:#565e41}
+.workspace-rates-run{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.workspace-rates-run button{grid-column:1 / -1}
+.workspace-rates-run-record{padding:12px 0;border-top:1px solid #dce4da}
+.workspace-rates-days{max-height:360px;overflow:auto;background:#f1f5ee;padding:12px;margin-top:10px}
+.workspace-rates-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.workspace-rates-day{display:grid;gap:5px;min-width:0;min-height:65px;padding:9px 5px;border:1px solid #d8e2d7;background:#eef3ed;font-size:10px}
+.workspace-rates-day strong{font-size:10px;overflow-wrap:anywhere}
+.workspace-rates-day span{font-weight:700;color:#2f5637}
+.workspace-rates-day.is-insufficient span{color:#8a6551}
+.workspace-rates-day small{font-size:9px}
+@media(max-width:640px){.workspace-rates-calendar{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:920px){.workspace-rates-grid{grid-template-columns:1fr}}
+@media(max-width:430px){.workspace-rates{padding:17px}.workspace-rates-run{grid-template-columns:1fr}}
+
+/* Protected property template sub-editor inside original Messages module. */
+.workspace-templates{margin-bottom:22px}
+.workspace-templates>.workspace-cms-catalog-top{margin:18px 0}
+.workspace-templates-form{padding:18px;background:#f8faf6;border:1px solid #d8e2d7;margin-top:18px}
+.workspace-templates-form h3{font:400 26px Georgia,serif;margin:0}
+.workspace-templates .workspace-record-details{max-height:120px;overflow:auto}
+.workspace-templates pre{max-width:100%;overflow-wrap:anywhere}
+@media(max-width:430px){.workspace-templates{padding:17px}}
+
+/* Protected room/amenity/policy editor, retaining approved JRNP layout. */
+.workspace-sections{margin-bottom:18px}
+.workspace-sections-form{padding:20px;border:1px solid #d9e4d6;background:#f9fbf7;margin-top:18px}
+.workspace-sections-form h3{font:400 28px Georgia,serif;margin:0}
+.workspace-sections .workspace-record-details{max-height:185px;overflow:auto}
+.workspace-sections .workspace-record-meta{overflow-wrap:anywhere}
+@media(max-width:430px){.workspace-sections{padding:17px}}

@@ -1,16 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><script data-bq124-release-guard>
+(()=>{const nativeFetch=window.fetch.bind(window);window.fetch=(input,options)=>{const u=new URL(typeof input==='string'?input:input.url,location.href);if(u.origin===location.origin&&u.pathname.startsWith('/api/'))return Promise.reject(new Error('Online availability and reservations are unavailable. Please contact the hosts.'));return nativeFetch(input,options)};
+document.addEventListener('submit',e=>{if(e.target.id==='request-form'){e.preventDefault();e.stopImmediatePropagation()}},true);
+document.addEventListener('DOMContentLoaded',()=>{const f=document.getElementById('request-form');if(f){f.hidden=true;for(const x of f.querySelectorAll('input,button,select,textarea'))x.disabled=true}const b=document.getElementById('request-submit');if(b){b.disabled=true;b.textContent='Online reservations unavailable'};const n=document.getElementById('request-feedback');if(n)n.textContent='Online reservations unavailable. Contact the hosts. No reservation or payment is created.'});})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
+
 <meta name="theme-color" content="#15261f">
 <meta name="description" content="Get to know JRNP Rentals, hosted directly by Nicholas and Jose for Phoenix and Weiss Lake vacation stays.">
 <title>About JRNP Rentals | Phoenix &amp; Weiss Lake Hosts</title>
 <link rel="stylesheet" href="/jrnp-next/style.css">
 <link rel="stylesheet" href="/jrnp-next/pages.css">
 <script defer src="/jrnp-next/guest-pages.js"></script>
-<script defer src="/jrnp-next/motion.js"></script></head>
+<script defer src="/jrnp-next/motion.js"></script><link rel="canonical" href="https://jrnprentals.com/jrnp-next/about.html"></head>
 <body class="jrnp-page">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header jrnp-home-header jrnp-subpage-header"><a class="wordmark wordmark-original" href="/jrnp-next/" aria-label="JRNP Rentals home"><img src="/jrnp-next/assets/brand/logo-jrnp.png" width="586" height="472" alt="JRNP Rentals original gold roof logo" decoding="async"></a>

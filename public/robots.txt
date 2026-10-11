@@ -1,2 +1,10 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /admin/
+Disallow: /admin-v2/
+Disallow: /my-stay.html
+Disallow: /jrnp-next/command.html
+Disallow: /jrnp-next/workspace.html
+Disallow: /jrnp-next/home.html
+
+Sitemap: https://jrnprentals.com/sitemap.xml

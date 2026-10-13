@@ -1,1 +1,104 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Restricted | JRNP Rentals</title></head><body><h1>This page is unavailable on the public website.</h1><p>Private workspace and test services are not published here.</p><a href="/jrnp-next/">Return to JRNP Rentals</a></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173c2b">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="Securely access a JRNP Rentals reservation, review stay details, and share arrival preferences.">
+<title>My Stay | JRNP Rentals Guest Portal</title>
+<link rel="canonical" href="https://jrnprentals.com/my-stay.html">
+<link rel="icon" href="/jrnp-next/assets/favicon.ico">
+<link rel="stylesheet" href="/jrnp-next/style.css">
+<link rel="stylesheet" href="/jrnp-next/my-stay.css">
+<script defer src="/jrnp-next/my-stay.js"></script>
+</head>
+<body class="jrnp-page jrnp-my-stay">
+<a class="skip" href="#main">Skip to guest portal</a>
+<header class="header jrnp-home-header jrnp-subpage-header">
+  <a class="wordmark wordmark-original" href="/" aria-label="JRNP Rentals home"><img src="/jrnp-next/assets/brand/logo-jrnp.png" width="586" height="472" alt="JRNP Rentals" decoding="async"></a>
+  <nav class="desktop-nav" aria-label="Main navigation"><a href="/#collection">Our Homes</a><a href="/#destinations">Explore the Area</a><a href="/#meet-hosts">Meet Your Hosts</a><a href="/#experience">Our Approach</a></nav>
+  <a class="header-cta" href="/jrnp-next/contact.html">Guest support ↗</a>
+  <details class="jrnp-subpage-menu"><summary>Menu <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></summary><nav class="jrnp-subpage-menu-links" aria-label="Mobile navigation"><a href="/">Home</a><a href="/#collection">Our Homes</a><a href="/jrnp-next/faq.html">Guest FAQ</a><a href="/jrnp-next/policies.html">Policies</a><a href="/jrnp-next/contact.html">Guest support</a></nav></details>
+</header>
+
+<main id="main">
+  <section class="stay-hero" aria-labelledby="stay-title">
+    <div class="stay-hero-copy">
+      <p class="stay-kicker">JRNP GUEST PORTAL</p>
+      <h1 id="stay-title">Your stay,<br><em>all in one place.</em></h1>
+      <p>Securely find your direct reservation, review the details on file, and share the information that helps us prepare for your arrival.</p>
+    </div>
+    <div class="stay-hero-trust" aria-label="Portal security features">
+      <span><b aria-hidden="true">01</b> Short-lived verification</span>
+      <span><b aria-hidden="true">02</b> Reservation-scoped access</span>
+      <span><b aria-hidden="true">03</b> No door code used to sign in</span>
+    </div>
+  </section>
+
+  <section class="stay-layout" aria-label="My Stay access and arrival guide">
+    <article class="stay-card stay-access-card">
+      <div id="lookup">
+        <p class="stay-kicker">SECURE RESERVATION ACCESS</p>
+        <h2>Welcome back.</h2>
+        <p class="stay-intro">Enter the booking reference and email address from your JRNP reservation. We will send a fresh, single-use verification code if the details match.</p>
+        <form id="lookupForm" class="stay-form">
+          <label for="bookingId">Booking reference<input id="bookingId" name="bookingId" type="text" maxlength="100" autocomplete="off" autocapitalize="characters" required></label>
+          <label for="reservationEmail">Reservation email<input id="reservationEmail" name="email" type="email" maxlength="254" autocomplete="email" inputmode="email" required></label>
+          <label id="otpField" for="otpCode" hidden>One-time verification code<input id="otpCode" name="otpCode" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" aria-describedby="lookupStatus"></label>
+          <button class="stay-primary-button" id="lookupButton" type="submit">Send verification code <span aria-hidden="true">↗</span></button>
+          <p class="stay-status" id="lookupStatus" role="status" aria-live="polite">Codes expire quickly and can be used only once.</p>
+        </form>
+        <noscript><p class="stay-status is-error">JavaScript is required for secure reservation verification. Please enable it or contact JRNP guest support.</p></noscript>
+      </div>
+
+      <div id="reservation" class="stay-reservation" tabindex="-1" hidden>
+        <div class="stay-reservation-heading"><div><p class="stay-kicker">YOUR RESERVATION</p><h2 id="propertyName">Your JRNP stay</h2></div><button id="changeReservation" class="stay-text-button" type="button">Use a different booking</button></div>
+        <dl class="stay-snapshot">
+          <div><dt>Dates</dt><dd id="dates">—</dd></div>
+          <div><dt>Guests</dt><dd id="guestCount">—</dd></div>
+          <div><dt>Reservation status</dt><dd id="bookingStatus">—</dd></div>
+          <div><dt>Payment status</dt><dd id="paymentStatus">—</dd></div>
+        </dl>
+
+        <section class="stay-profile" aria-labelledby="arrival-title">
+          <p class="stay-kicker">HELP US PREPARE</p><h3 id="arrival-title">Share your arrival preferences.</h3>
+          <form id="profileForm" class="stay-form">
+            <label for="arrivalTime">Expected arrival time<input id="arrivalTime" name="arrivalTime" type="text" maxlength="100" autocomplete="off" placeholder="For example, around 6:30 p.m."></label>
+            <label for="preferredContact">Best way to reach you<select id="preferredContact" name="preferredContact"><option value="">Choose one</option><option value="email">Email</option><option value="text">Text</option><option value="phone">Phone</option></select></label>
+            <label for="travelNotes">Anything we should know?<textarea id="travelNotes" name="travelNotes" maxlength="2000" placeholder="Arrival questions, accessibility needs, or other helpful trip details"></textarea></label>
+            <button class="stay-primary-button" id="profileButton" type="submit">Save stay details <span aria-hidden="true">↗</span></button>
+            <p class="stay-status" id="profileStatus" role="status" aria-live="polite">Only share information that helps JRNP prepare for this reservation.</p>
+          </form>
+        </section>
+
+        <figure class="stay-wifi" id="wifiCard" hidden>
+          <img id="wifiQr" alt="QR code for the verified reservation's property Wi-Fi" width="136" height="136">
+          <figcaption><p class="stay-kicker">VERIFIED GUESTS ONLY</p><h3>Connect to Wi-Fi.</h3><p>Open your phone camera and scan this code. JRNP generates it securely and does not send network credentials to a public QR service.</p></figcaption>
+        </figure>
+
+        <section class="stay-help" aria-labelledby="change-plans-title"><div><p class="stay-kicker">NEED HELP?</p><h3 id="change-plans-title">Plans changed?</h3><p>Send a written support request tied to this booking. A reservation is not changed or cancelled until JRNP confirms it in writing.</p></div><div class="stay-help-links"><a id="cancellationSupportLink" href="/jrnp-next/contact.html">Request support ↗</a><a href="/jrnp-next/policies.html">Read booking policies</a></div></section>
+      </div>
+      <p class="stay-privacy"><strong>Privacy by design:</strong> JRNP uses a short-lived, single-use email code and a temporary reservation session. Property door codes and exact access instructions are never used as login credentials.</p>
+    </article>
+
+    <aside class="stay-card stay-journey" aria-labelledby="journey-title">
+      <p class="stay-kicker">FROM REQUEST TO THE FRONT DOOR</p>
+      <h2 id="journey-title">A clear path to check-in.</h2>
+      <p class="stay-intro">Private arrival information is released only after confirmation and property-readiness checks.</p>
+      <ol class="stay-steps">
+        <li><span>01</span><div><h3>Request reviewed</h3><p>JRNP verifies dates, guest details, special requests, pricing, and property fit. A request is not a confirmed reservation.</p></div></li>
+        <li><span>02</span><div><h3>Approval before payment</h3><p>If the request is approved, JRNP sends written next steps. No card is charged when a request is submitted.</p></div></li>
+        <li><span>03</span><div><h3>Reservation confirmed</h3><p>Your confirmation records the home, dates, guest count, booking reference, and payment status.</p></div></li>
+        <li><span>04</span><div><h3>Arrival preferences</h3><p>Use My Stay to share your timing, preferred contact method, and practical needs before arrival.</p></div></li>
+        <li><span>05</span><div><h3>Property readiness</h3><p>The host team verifies the home, parking guidance, guest entrance, and unique access details.</p></div></li>
+        <li><span>06</span><div><h3>Guided arrival</h3><p>Confirmed guests receive property-specific directions and access information at the appropriate time.</p></div></li>
+        <li><span>07</span><div><h3>Direct stay support</h3><p>Your reservation stays connected to the JRNP host team for practical help throughout the trip.</p></div></li>
+        <li><span>08</span><div><h3>Simple checkout</h3><p>Your reminder includes the home's verified checkout time and property-specific closing steps.</p></div></li>
+      </ol>
+    </aside>
+  </section>
+</main>
+
+<footer class="stay-footer"><div><a class="stay-footer-brand" href="/">JRNP <span>RENTALS</span></a><p>Phoenix stays. Weiss Lake escapes. Every detail, personally cared for.</p></div><nav aria-label="Guest resources"><a href="/jrnp-next/faq.html">Guest FAQ</a><a href="/jrnp-next/policies.html">Policies</a><a href="/jrnp-next/contact.html">Guest support</a></nav><small>© 2026 JRNP Rentals · Secure guest portal</small></footer>
+</body>
+</html>

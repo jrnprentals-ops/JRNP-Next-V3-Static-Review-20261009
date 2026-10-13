@@ -1,18 +1,17 @@
-# JRNP Next V3 — isolated, read-only guest frontend preview
+# JRNP Next V3 — production guest frontend
 
-This PUBLIC GitHub repository contains only reviewed guest-facing HTML/CSS/JS and 100 original property photos for a separate Render noindex preview. It is NOT the Mac Mini frontend owner's authoritative source. No CMP private logic, host credentials, payment keys, guest records, or server-side booking code belongs here.
+This public repository contains the approved guest-facing V3 HTML/CSS/JS and original property photos. It contains no CMP private logic, host credentials, payment keys, guest records, or server-side booking code.
 
-## Preview-only public calendar
+## Availability and request-to-book
 
-The homepage is a single check-in → check-out range picker, while all five listing pages show green available dates, muted red blocked dates, nightly rate estimates, minimum-night rules, and a disabled gray/unverified state. Data loads on demand from the **existing** Supabase `jrnp-public-booking` public calendar endpoint using the browser-safe `sb_publishable_` key. Each GET includes `skipSync=1`: it only reads existing JRNP property and inventory records; it does not initiate imports, payment, booking, or any server-side writes. Internal response fields are stripped before rendering.
+The homepage and five listing pages use the existing JRNP backend for quotes and read-only calendar data. Calendar reads include `skipSync=1`, publish confirmed blocked dates only, and leave every other date unverified until the quote endpoint rechecks the requested stay.
 
-The public pricing is a nightly estimate, not an all-in quote or reservation. Airbnb/Vrbo availability is only as current as the underlying already-imported inventory; final host verification is required. If API verification fails, dates become unselectable rather than falsely green. The former 12-hour preview-only JSON snapshot was removed. No public booking form can submit a reservation on this static preview; the quote/host CMP/payment backend remains separate and unverified.
+A successful quote can be submitted as a Request to Book using a stable idempotency key. The backend revalidates availability and saves the request for host review. A request is not a confirmed reservation, and this frontend does not charge a payment or send automated guest messages.
 
 ## Deployment and safety
 
-Render static site URL: https://jrnp-next-v3-review-only-20261009.onrender.com/jrnp-next/
-Render autoDeploy OFF, no custom domain, no production DNS mutation, noindex/nofollow. The build copies `public/jrnp-next/index.html` to `public/index.html`; CDN root may cache previous versions for up to 5 minutes, so use `/jrnp-next/` for the freshest preview while validating.
+Production target: `jrnp-next-v3-guest-stage` on Vercel, served at `https://jrnprentals.com/`. `vercel.json` exposes only the quote, booking-request, and read-only property-calendar paths from the existing `jrnp-backend` service.
 
-Do not promote this branch as a production booking app without full host CMP auth/persistence verification, iCal freshness controls, secure request-to-book flow, quote calculations and production release signoff. No Render paid plan required for the preview.
+Keep live payments and automated guest sends disabled until they are separately verified and authorized. Preview the exact release artifact, run desktop/mobile smoke checks, and retain the previous production deployment as the rollback target before promotion.
 
-Local QA: `calendar-ui-qa.cjs` passed 13/13 including blocked-date rejection and simulated API outage; `qa_fixed_mobile_motion.cjs` passed 10/10. These QA screenshots and scripts reside on iMac outside the Render published `public` tree.
+Run `node --test scripts/production-booking-contract.test.cjs` for the release contract checks.

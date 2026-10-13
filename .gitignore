@@ -5,3 +5,5 @@
 *.pem
 *.log
 node_modules/
+.vercel
+.env*

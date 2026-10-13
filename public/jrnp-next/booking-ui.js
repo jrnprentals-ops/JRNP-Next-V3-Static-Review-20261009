@@ -27,7 +27,7 @@
   function resetRequest(){
     confirmedRequest=null;idempotencyKey=null;requestPending=false;requestSaved=false;
     requestPanel.hidden=true;requestError.hidden=true;requestSuccess.hidden=true;
-    requestButton.disabled=false;requestButton.removeAttribute('aria-busy');requestButton.textContent='Save test request ↗';
+    requestButton.disabled=false;requestButton.removeAttribute('aria-busy');requestButton.textContent='Send booking request ↗';
   }
   function emitQuoteState(state,request,verified){
     document.dispatchEvent(new CustomEvent('jrnp:quote-state',{detail:{state,request,verified}}));
@@ -59,7 +59,7 @@
         ['Initial deposit if requested',api.money(verified.depositDue)],
         ['Remaining balance',api.money(verified.balanceDue)]
       ]);
-      // A quote does not reserve inventory. Only local demo records can be created.
+      // A quote does not reserve inventory. The server revalidates before saving a request.
       idempotencyKey=secureRequestKey();
       confirmedRequest=request;
       requestPanel.hidden=false;
@@ -98,29 +98,30 @@
       idempotencyKey
     };
     requestPending=true;requestError.hidden=true;requestSuccess.hidden=true;
-    requestButton.disabled=true;requestButton.setAttribute('aria-busy','true');requestButton.textContent='Saving test request…';
+    requestButton.disabled=true;requestButton.setAttribute('aria-busy','true');requestButton.textContent='Sending booking request…';
     try{
-      const res=await fetch('/api/staging/requests',{
+      const res=await fetch('/api/bookings',{
         method:'POST',
-        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        headers:{'Content-Type':'application/json','Accept':'application/json','Idempotency-Key':idempotencyKey},
         body:JSON.stringify(body)
       });
       const result=await res.json().catch(()=>({}));
       if(sequence!==current)return;
-      if(!(res.status===201||res.status===200)||typeof result.id!=='string'){
-        throw new Error(res.status===503?'The staging booking test server is currently disabled.':res.status===409?'Please retry with a new quote; this test request was changed.':'Could not save a test request. No reservation was created.');
+      if(!(res.status===201||res.status===200)||typeof result.bookingId!=='string'){
+        const message=typeof result.error==='string'?result.error:'';
+        throw new Error(res.status===409?'Those dates are no longer available. Please choose new dates and request a fresh quote.':res.status===429?'Too many requests were sent. Please wait a moment and retry.':res.status===503?'Request-to-book is temporarily unavailable. Please try again shortly.':message||'Could not send the booking request. No reservation or payment was created.');
       }
       requestSaved=true;
-      requestButton.textContent='Test request saved';requestButton.disabled=true;
-      requestSuccess.textContent='Staging reference '+result.id+' saved as '+String(result.status||'pending_preview')+'. This is not a reservation. No email or payment was sent.';
+      requestButton.textContent='Booking request sent';requestButton.disabled=true;
+      requestSuccess.textContent='Request '+result.bookingId+' was received for host review. Your stay is not confirmed, and no payment has been charged.';
       requestSuccess.hidden=false;
     }catch(err){
       if(sequence!==current)return;
-      requestError.textContent=err.message||'Could not reach the staging server. Retry using the same form; no live booking was made.';
+      requestError.textContent=err.message||'Could not send the request. Retry using the same form; no reservation or payment was created.';
       requestError.hidden=false;
     }finally{
       requestPending=false;
-      if(sequence===current){requestButton.removeAttribute('aria-busy');if(!requestSaved){requestButton.disabled=false;requestButton.textContent='Retry test request ↗'}}
+      if(sequence===current){requestButton.removeAttribute('aria-busy');if(!requestSaved){requestButton.disabled=false;requestButton.textContent='Retry booking request ↗'}}
     }
   });
 })();

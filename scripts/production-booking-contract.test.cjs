@@ -43,7 +43,18 @@ test('calendar adapter fails closed and routes expose only required backend path
  assert.doesNotMatch(adapter,/status:'available'/);
  const config=JSON.parse(read('vercel.json'));
  assert.deepEqual(config.rewrites.map(route=>route.source),[
-  '/api/quote','/api/bookings','/api/properties/:id/calendar'
+  '/api/quote','/api/bookings','/api/support/messages','/api/properties/:id/calendar'
  ]);
  assert(config.rewrites.every(route=>route.destination.startsWith('https://jrnp-backend.vercel.app/api/')));
+});
+
+test('guest messaging saves to the production support endpoint',()=>{
+ const html=read('public/jrnp-next/contact.html');
+ const js=read('public/jrnp-next/guest-pages.js');
+ assert.doesNotMatch(html,/data-bq124-release-guard|This preview|Open my email app|Staging preview/i);
+ assert.match(html,/jrnp-contact-topic/);
+ assert.match(html,/jrnp-contact-checkin/);
+ assert.match(js,/fetch\('\/api\/support\/messages'/);
+ assert.match(js,/'Idempotency-Key':idempotencyKey/);
+ assert.match(js,/No reservation or payment was created/);
 });

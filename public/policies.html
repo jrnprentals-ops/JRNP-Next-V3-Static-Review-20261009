@@ -1,9 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><script data-bq124-release-guard>
-(()=>{const nativeFetch=window.fetch.bind(window);window.fetch=(input,options)=>{const u=new URL(typeof input==='string'?input:input.url,location.href);if(u.origin===location.origin&&u.pathname.startsWith('/api/'))return Promise.reject(new Error('Online availability and reservations are unavailable. Please contact the hosts.'));return nativeFetch(input,options)};
-document.addEventListener('submit',e=>{if(e.target.id==='request-form'){e.preventDefault();e.stopImmediatePropagation()}},true);
-document.addEventListener('DOMContentLoaded',()=>{const f=document.getElementById('request-form');if(f){f.hidden=true;for(const x of f.querySelectorAll('input,button,select,textarea'))x.disabled=true}const b=document.getElementById('request-submit');if(b){b.disabled=true;b.textContent='Online reservations unavailable'};const n=document.getElementById('request-feedback');if(n)n.textContent='Online reservations unavailable. Contact the hosts. No reservation or payment is created.'});})();
-</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#15261f">
 <meta name="description" content="JRNP Rentals guest booking terms, check-in and checkout, deposits, cancellation guidelines, and property-specific rules.">
 <title>Booking Policies &amp; House Rules | JRNP Rentals</title>
@@ -81,7 +77,7 @@ document.addEventListener('DOMContentLoaded',()=>{const f=document.getElementByI
     </div>
   </div>
   <div class="footer-bottom">
-    <small>© 2026 JRNP Rentals <span aria-hidden="true">·</span> Phoenix, AZ &amp; Weiss Lake, AL <span class="footer-preview">· Staging preview</span></small>
+    <small>© 2026 JRNP Rentals <span aria-hidden="true">·</span> Phoenix, AZ &amp; Weiss Lake, AL <span class="footer-preview">· Direct booking</span></small>
     <span>Thoughtful homes. Genuine hospitality.</span>
     <a href="#main">Back to top ↑</a>
   </div>

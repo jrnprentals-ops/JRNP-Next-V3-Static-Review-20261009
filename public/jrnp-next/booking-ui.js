@@ -47,7 +47,7 @@
       if(!res.ok){
         if(res.status===409){emitQuoteState('unavailable',request);render('Those dates are unavailable','Please choose another check-in or checkout date.');return}
         if(res.status===400&&typeof data.error==='string'){emitQuoteState('invalid',request);render('Please review your dates',data.error);return}
-        throw new Error('Live availability is not connected to this preview yet. No booking or payment has been made.');
+        throw new Error('Live availability is temporarily unavailable. No booking or payment has been made.');
       }
       const verified=api.parseQuote(data,request);
       emitQuoteState('verified',request,verified);
@@ -68,7 +68,7 @@
       resetRequest();
       emitQuoteState('unknown',request);
       const msg=err.message||'We cannot verify the estimate right now.';
-      render('Quote not confirmed',msg.includes('not connected')?msg:'We could not confirm this stay safely. Please try again or contact JRNP.');
+      render('Quote not confirmed',msg.includes('temporarily unavailable')?msg:'We could not confirm this stay safely. Please try again or message JRNP.');
     }finally{
       if(sequence===current){button.disabled=false;button.removeAttribute('aria-busy');button.textContent='Check availability ↗'}
     }
@@ -93,6 +93,7 @@
       lastName:document.getElementById('request-last').value.trim(),
       email:document.getElementById('request-email').value.trim(),
       phone:document.getElementById('request-phone').value.trim(),
+      notes:document.getElementById('request-notes')?.value.trim()||'',
       ageCertified:document.getElementById('request-age').checked,
       rulesAcknowledged:document.getElementById('request-rules').checked,
       idempotencyKey
@@ -113,7 +114,7 @@
       }
       requestSaved=true;
       requestButton.textContent='Booking request sent';requestButton.disabled=true;
-      requestSuccess.textContent='Request '+result.bookingId+' was received for host review. Your stay is not confirmed, and no payment has been charged.';
+      requestSuccess.textContent='Request '+result.bookingId+' was received. JRNP will review your dates and contact you with the next step. Your stay is not confirmed, and no payment has been charged.';
       requestSuccess.hidden=false;
     }catch(err){
       if(sequence!==current)return;

@@ -26,6 +26,10 @@
 .jrnp-page-form input,.jrnp-page-form select,.jrnp-page-form textarea{border:1px solid #c6d7c2;background:#fbfcf8;color:#243f2c;padding:16px;min-width:0;width:100%;font:15px Arial,Helvetica,sans-serif;line-height:1.5;border-radius:0}
 .jrnp-page-form textarea{min-height:135px;resize:vertical}
 .jrnp-page-disclosure{margin-top:12px;color:#617964;font-size:12px!important;line-height:1.7!important}
+.jrnp-page-disclosure.is-success{border-left:3px solid #4f805c;background:#edf5ea;padding:13px 15px;color:#285438!important}
+.jrnp-page-disclosure.is-error{border-left:3px solid #a34c43;background:#fbefed;padding:13px 15px;color:#85382f!important}
+.jrnp-page-form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.jrnp-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 .jrnp-page-contact-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:35px;align-items:start}
 .jrnp-page-faq{display:grid;gap:12px;margin:35px 0}
 .jrnp-page-faq details{background:#fff;border:1px solid #d7e4d6;padding:0 25px}
@@ -39,7 +43,7 @@
 .jrnp-page-warn{background:#ecf3e8;border-left:3px solid #88a38c;padding:20px 25px;font-size:13px;line-height:1.7;color:#496b50}
 .jrnp-page footer a{color:inherit}
 @media(max-width:950px){.jrnp-page-split,.jrnp-page-contact-layout{grid-template-columns:1fr;gap:28px}.jrnp-page-grid{grid-template-columns:1fr 1fr}.jrnp-page-content{padding:65px 6%}}
-@media(max-width:600px){.jrnp-page-hero{padding:45px 22px 52px}.jrnp-page-hero h1{font-size:clamp(47px,12vw,69px)}.jrnp-page-hero>p:last-child{font-size:15px}.jrnp-page-content{padding:55px 22px}.jrnp-page-grid{grid-template-columns:1fr}.jrnp-page-grid article{padding:25px}.jrnp-page-panel{padding:26px}.jrnp-page-faq details{padding:0 18px}.jrnp-page-split{margin-bottom:50px}}
+@media(max-width:600px){.jrnp-page-hero{padding:45px 22px 52px}.jrnp-page-hero h1{font-size:clamp(47px,12vw,69px)}.jrnp-page-hero>p:last-child{font-size:15px}.jrnp-page-content{padding:55px 22px}.jrnp-page-grid{grid-template-columns:1fr}.jrnp-page-grid article{padding:25px}.jrnp-page-panel{padding:26px}.jrnp-page-faq details{padding:0 18px}.jrnp-page-split{margin-bottom:50px}.jrnp-page-form-row{grid-template-columns:1fr}}
 
 /* Distinct About-page host introduction within the existing JRNP Next guest layout. */
 .jrnp-page-hosts{padding:clamp(30px,5vw,62px);margin:5px 0 80px;background:#e8eee6;border:1px solid #d6e2d2}

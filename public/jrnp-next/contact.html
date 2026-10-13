@@ -1,11 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><script data-bq124-release-guard>
-(()=>{const nativeFetch=window.fetch.bind(window);window.fetch=(input,options)=>{const u=new URL(typeof input==='string'?input:input.url,location.href);if(u.origin===location.origin&&u.pathname.startsWith('/api/'))return Promise.reject(new Error('Online availability and reservations are unavailable. Please contact the hosts.'));return nativeFetch(input,options)};
-document.addEventListener('submit',e=>{if(e.target.id==='request-form'){e.preventDefault();e.stopImmediatePropagation()}},true);
-document.addEventListener('DOMContentLoaded',()=>{const f=document.getElementById('request-form');if(f){f.hidden=true;for(const x of f.querySelectorAll('input,button,select,textarea'))x.disabled=true}const b=document.getElementById('request-submit');if(b){b.disabled=true;b.textContent='Online reservations unavailable'};const n=document.getElementById('request-feedback');if(n)n.textContent='Online reservations unavailable. Contact the hosts. No reservation or payment is created.'});})();
-</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#15261f">
 <meta name="description" content="Contact JRNP Rentals directly about a Phoenix or Weiss Lake stay, booking questions, and longer stays.">
 <title>Contact JRNP Rentals | Booking &amp; Guest Questions</title>
@@ -29,24 +25,29 @@ document.addEventListener('DOMContentLoaded',()=>{const f=document.getElementByI
 <div class="jrnp-page-panel"><p class="kicker">JRNP RENTALS / EMAIL</p><h3>Direct contact.</h3>
 <p><strong id="jrnp-contact-address">jrnprentals@gmail.com</strong></p>
 <p>If you already have a confirmed reservation, use your booking platform's secure message thread for stay-specific details.</p></div>
-<p class="jrnp-page-disclosure">Messages composed here open your own email application. This preview does not send or save guest messages itself.</p>
+<p class="jrnp-page-disclosure">Messages sent here are saved securely for JRNP’s owner team. Sending a question does not create a reservation or payment.</p>
 <div class="jrnp-page-nav"><a href="/jrnp-next/faq.html">Frequently asked questions ↗</a><a href="/jrnp-next/policies.html">Booking policies ↗</a></div>
 </div>
 <div class="jrnp-page-panel"><p class="kicker">COMPOSE A MESSAGE</p><h2>What can we help with?</h2>
 <form id="jrnp-contact-form" class="jrnp-page-form">
 <label for="jrnp-contact-name">Your name<input id="jrnp-contact-name" type="text" maxlength="120" autocomplete="name" required></label>
 <label for="jrnp-contact-email">Reply-to email<input id="jrnp-contact-email" type="email" maxlength="254" autocomplete="email" required></label>
+<label for="jrnp-contact-phone">Phone (optional)<input id="jrnp-contact-phone" type="tel" maxlength="40" autocomplete="tel"></label>
 <label for="jrnp-contact-property">Property of interest<select id="jrnp-contact-property">
-<option value="General JRNP question">General JRNP question</option>
-<option value="Stylish &amp; Perfect for Families">Stylish &amp; Perfect for Families</option>
-<option value="Modern All-En-Suite Home">Modern All-En-Suite Home</option>
-<option value="Palm Haven Pool House">Palm Haven Pool House</option>
-<option value="Detached Studio Guesthouse">Detached Studio Guesthouse</option>
-<option value="Weiss Lake House with Private Dock">Weiss Lake House with Private Dock</option>
+<option value="">General JRNP question</option>
+<option value="1">Stylish &amp; Perfect for Families</option>
+<option value="2">Modern All-En-Suite Home</option>
+<option value="5">Palm Haven Pool House</option>
+<option value="4">Detached Studio Guesthouse</option>
+<option value="3">Weiss Lake House with Private Dock</option>
 </select></label>
+<label for="jrnp-contact-topic">What can we help with?<select id="jrnp-contact-topic"><option>Booking question</option><option>Dates or pricing</option><option>Extended stay</option><option>Accessibility or amenities</option><option>Existing reservation</option><option>Other</option></select></label>
+<div class="jrnp-page-form-row"><label for="jrnp-contact-checkin">Preferred check-in<input id="jrnp-contact-checkin" type="date"></label><label for="jrnp-contact-checkout">Preferred check-out<input id="jrnp-contact-checkout" type="date"></label></div>
+<label for="jrnp-contact-guests">Guests (optional)<input id="jrnp-contact-guests" type="number" min="1" max="8" inputmode="numeric"></label>
 <label for="jrnp-contact-message">Your question<textarea id="jrnp-contact-message" maxlength="2500" required placeholder="Tell us your preferred dates, number of guests and what you'd like to know."></textarea></label>
-<button class="jrnp-page-cta" type="submit">Open my email app ↗</button>
-<p id="jrnp-contact-feedback" role="status" aria-live="polite" class="jrnp-page-disclosure">Nothing is sent until you review and send the message from your email app.</p>
+<label class="jrnp-honeypot" for="jrnp-contact-website" aria-hidden="true">Leave this field empty<input id="jrnp-contact-website" type="text" tabindex="-1" autocomplete="off"></label>
+<button class="jrnp-page-cta" type="submit">Send message securely ↗</button>
+<p id="jrnp-contact-feedback" role="status" aria-live="polite" class="jrnp-page-disclosure">Your message will be saved to JRNP’s private owner workspace.</p>
 </form></div></div>
 </section></main>
 <footer class="footer" aria-label="JRNP Rentals footer">
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded',()=>{const f=document.getElementByI
     </div>
   </div>
   <div class="footer-bottom">
-    <small>© 2026 JRNP Rentals <span aria-hidden="true">·</span> Phoenix, AZ &amp; Weiss Lake, AL <span class="footer-preview">· Staging preview</span></small>
+    <small>© 2026 JRNP Rentals <span aria-hidden="true">·</span> Phoenix, AZ &amp; Weiss Lake, AL <span class="footer-preview">· Direct booking</span></small>
     <span>Thoughtful homes. Genuine hospitality.</span>
     <a href="#main">Back to top ↑</a>
   </div>

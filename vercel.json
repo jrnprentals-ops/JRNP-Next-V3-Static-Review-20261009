@@ -10,6 +10,10 @@
       "destination": "https://jrnp-backend.vercel.app/api/bookings"
     },
     {
+      "source": "/api/support/messages",
+      "destination": "https://jrnp-backend.vercel.app/api/support/messages"
+    },
+    {
       "source": "/api/properties/:id/calendar",
       "destination": "https://jrnp-backend.vercel.app/api/properties/:id/calendar"
     }
